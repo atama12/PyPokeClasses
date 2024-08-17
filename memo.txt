@@ -1,0 +1,3 @@
+https://pokeapi.co/api/v2/pokemon?limit=10000
+1-1025…ポケモン
+10000-10277…その他フォルム
