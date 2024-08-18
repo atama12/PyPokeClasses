@@ -1,4 +1,4 @@
-from .pokeAPI_models import BaseModel,NamedAPIResource,VersionGameIndex
+from Models.Utility.Common import *
 from typing import List
 class Pokemon(BaseModel):
     def __init__(self,id):

@@ -1,11 +1,26 @@
-from Models.Pokemon import Pokemon
+from Models.Pokemon.Abilities import *
+from Models.Pokemon.Characteristic import *
+from Models.Pokemon.EggGroup import *
+from Models.Pokemon.Genders import *
+from Models.Pokemon.GrowthRate import *
+from Models.Pokemon.Natures import *
+from Models.Pokemon.Pokemon import *
+from Models.Pokemon.PokemonColors import *
+from Models.Pokemon.PokemonForms import *
+from Models.Pokemon.PokemonHabitats import *
+from Models.Pokemon.PokemonLocationAreas import *
+from Models.Pokemon.PokemonShapes import *
+from Models.Pokemon.PokemonSpecies import *
+from Models.Pokemon.Stats import *
+from Models.Pokemon.Types import *
+
 
 # ポケモンデータを格納するリスト
 extracted_data = []
 
-data = Pokemon(2)
-data2 = data.abilities
-print(data.moves)
+data = Types(1).pokemon[0].pokemon.name
+
+print(data)
 # ポケモンデータの取得とリストへの追加
 #for i in range(1):
     
