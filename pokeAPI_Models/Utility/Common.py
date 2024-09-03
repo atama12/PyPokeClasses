@@ -2,20 +2,22 @@ import requests_cache
 from typing import List
 # requests_cache を有効化
 import requests
-session = requests_cache.CachedSession('pokemon')
+
 
 class BaseModel:
     def __init__(self,url):
+        self.session = requests_cache.CachedSession('pokemon')
+        self._json_data = self.make_request(url)
         
-        self.__data = session.get(url)
-        
-        if self.__data.status_code == 200:
-            self._json_data = self.__data.json()
-        elif self.__data.status_code == 404:
+    def make_request(self,url):
+        response = self.session.get(url)
+        if response.status_code == 200:
+            return response.json()
+        elif response.status_code == 404:
             print(f"Error: Resource not fount at {url}")
-            self._json_data = None
+            return None
         else:
-            self.__data.raise_for_status()
+            response.raise_for_status()
             
             
 class APIResource:

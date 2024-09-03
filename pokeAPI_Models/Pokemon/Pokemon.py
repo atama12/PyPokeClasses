@@ -84,7 +84,7 @@ class PokemonAbility:
     
     @property
     def slot(self):
-        return int(self.__json_data["is_hidden"])
+        return int(self.__json_data["slot"])
     
     @property
     def ability(self):
