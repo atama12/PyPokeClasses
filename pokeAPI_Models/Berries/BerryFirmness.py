@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from .Berry import Berry
 from typing import List
 
 class BerryFirmness(BaseModel):
@@ -16,7 +15,7 @@ class BerryFirmness(BaseModel):
 
     @property
     def berries(self):
-        array : List[Berry] = [Berry(json_data["name"]) for json_data in self._json_data["berries"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["berries"]]
         return array
     
     @property

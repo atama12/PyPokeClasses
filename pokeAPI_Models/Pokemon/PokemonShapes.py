@@ -1,6 +1,4 @@
 from ..Utility.Common import *
-from .PokemonSpecies import PokemonSpecies
-from ..Utility.Language import Language
 from typing import List
 class PokemonShapes(BaseModel):
     def __init__(self,id):
@@ -26,7 +24,7 @@ class PokemonShapes(BaseModel):
     
     @property
     def pokemon_species(self):
-        array : List[PokemonSpecies] = [PokemonSpecies(json_data["name"]) for json_data in self._json_data["pokemon_species"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["pokemon_species"]]
         return array
     
 class AwesomeName:
@@ -39,5 +37,5 @@ class AwesomeName:
     
     @property
     def language(self):
-        return Language(self.__json_data["language"]["name"])  
+        return NamedAPIResource(self.__json_data["language"])  
     

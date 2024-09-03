@@ -1,7 +1,4 @@
 from ..Utility.Common import *
-from ..Items.Item import Item
-from ..Moves.Moves import Moves
-from ..Games.VersionGroup import VersionGroup
 from typing import List
 
 class Machine(BaseModel):
@@ -15,12 +12,12 @@ class Machine(BaseModel):
     
     @property
     def item(self):
-        return Item(self._json_data["item"]["name"])
+        return NamedAPIResource(self._json_data["item"])
   
     @property
     def move(self):
-        return Moves(self._json_data["move"]["name"])
+        return NamedAPIResource(self._json_data["move"])
     
     @property
     def version_group(self):
-        return VersionGroup(self._json_data["version_group"]["name"])
+        return NamedAPIResource(self._json_data["version_group"])

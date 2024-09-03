@@ -6,9 +6,18 @@ session = requests_cache.CachedSession('pokemon')
 
 class BaseModel:
     def __init__(self,url):
-        self.__data = session.get(url)
-        self._json_data = self.__data.json()
         
+        self.__data = session.get(url)
+        
+        if self.__data.status_code == 200:
+            self._json_data = self.__data.json()
+        elif self.__data.status_code == 404:
+            print(f"Error: Resource not fount at {url}")
+            self._json_data = None
+        else:
+            self.__data.raise_for_status()
+            
+            
 class APIResource:
     def __init__(self,json_data):
         self.__json_data = json_data

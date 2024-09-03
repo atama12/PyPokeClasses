@@ -1,8 +1,4 @@
 from ..Utility.Common import *
-from ..Locations.Location import Location
-from ..Games.Generation import Generation
-from ..Games.Pokedex import Pokedex
-from ..Games.VersionGroup import VersionGroup
 from typing import List
 
 class Region(BaseModel):
@@ -16,7 +12,7 @@ class Region(BaseModel):
     
     @property
     def locations(self):
-        array : List[Location] = [Location(json_data["name"]) for json_data in self._json_data["locations"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["locations"]]
         return array
     
     @property
@@ -30,15 +26,15 @@ class Region(BaseModel):
 
     @property
     def main_generation(self):
-        return Generation(self._json_data["main_generation"]["name"])
+        return NamedAPIResource(self._json_data["main_generation"])
 
     @property
     def pokedexes(self):
-        array : List[Pokedex] = [Pokedex(json_data["name"]) for json_data in self._json_data["pokedexes"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["pokedexes"]]
         return array
     
     @property
     def version_groups(self):
-        array : List[VersionGroup] = [VersionGroup(json_data["name"]) for json_data in self._json_data["version_groups"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["version_groups"]]
         return array
     

@@ -1,16 +1,4 @@
 from ..Utility.Common import *
-from .GrowthRate import GrowthRate
-from .EggGroup import EggGroup
-from .PokemonColors import PokemonColors
-from .PokemonShapes import PokemonShapes
-from .PokemonSpecies import PokemonSpecies
-from ..Evolution.EvolutionChain import EvolutionChain
-from .PokemonHabitats import PokemonHabitats
-from ..Games.Generation import Generation
-from ..Utility.Language import Language
-from ..Games.Pokedex import Pokedex
-from ..Locations.PalParkArea import PalParkArea
-from ..Pokemon.Pokemon import Pokemon
 from typing import List
 
 class PokemonSpecies(BaseModel):
@@ -61,39 +49,39 @@ class PokemonSpecies(BaseModel):
         return bool(self._json_data["forms_switchable"])
     @property
     def growth_rate(self):
-        return GrowthRate(self._json_data["growth_rate"]["name"])
+        return NamedAPIResource(self._json_data["growth_rate"])
     @property
     def pokedex_numbers(self):
         array : List[PokemonSpeciesDexEntry] = [ PokemonSpeciesDexEntry(json_data) for json_data in self._json_data["pokedex_numbers"]]
         return array
     @property
     def egg_groups(self):
-        array : List[EggGroup] = [ EggGroup(json_data["name"]) for json_data in self._json_data["egg_groups"]]
+        array : List[NamedAPIResource] = [ NamedAPIResource(json_data) for json_data in self._json_data["egg_groups"]]
         return array
     
     @property
     def color(self):
-        return PokemonColors(self._json_data["color"]["name"])
+        return NamedAPIResource(self._json_data["color"])
     
     @property
     def shape(self):
-        return PokemonShapes(self._json_data["shape"]["name"])
+        return NamedAPIResource(self._json_data["shape"])
     
     @property
     def evolves_from_species(self):
-        return PokemonSpecies(self._json_data["evolves_from_species"]["name"])
+        return NamedAPIResource(self._json_data["evolves_from_species"])
     
     @property
     def evolution_chain(self):
-        return EvolutionChain(str(self._json_data["evolution_chain"]["url"]).split('/')[-2])
+        return APIResource(self._json_data["evolution_chain"])
     
     @property
     def habitat(self):
-        return PokemonHabitats(self._json_data["habitat"]["name"])
+        return NamedAPIResource(self._json_data["habitat"])
     
     @property
     def generation(self):
-        return Generation(self._json_data["generation"]["name"])
+        return NamedAPIResource(self._json_data["generation"])
     
     @property
     def names(self):
@@ -132,7 +120,7 @@ class Genus:
     
     @property
     def language(self):
-        return Language(self.__json_data["language"]["name"])    
+        return NamedAPIResource(self.__json_data["language"])    
     
 class PokemonSpeciesDexEntry:
     def __init__(self,json_data):
@@ -144,7 +132,7 @@ class PokemonSpeciesDexEntry:
     
     @property
     def pokedex(self):
-        return Pokedex(self.__json_data["pokedex"]["name"])
+        return NamedAPIResource(self.__json_data["pokedex"])
     
 class PalParkEncounterArea:
     def __init__(self,json_data):
@@ -158,7 +146,7 @@ class PalParkEncounterArea:
         return int(self.__json_data["rate"])
     @property
     def area(self):
-        return PalParkArea(self.__json_data["area"]["name"])
+        return NamedAPIResource(self.__json_data["area"])
     
 class PokemonSpeciesVariety:
     def __init__(self,json_data):
@@ -170,4 +158,4 @@ class PokemonSpeciesVariety:
 
     @property
     def pokemon(self):
-        return Pokemon(self.__json_data["pokemon"]["name"])
+        return NamedAPIResource(self.__json_data["pokemon"])

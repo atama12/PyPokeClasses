@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from ..Pokemon.PokemonSpecies import PokemonSpecies
 from typing import List
 
 class PalParkArea(BaseModel):
@@ -40,5 +39,5 @@ class PalParkEncounterSpecies:
     
     @property
     def pokemon_species(self):
-        return PokemonSpecies(self.__json_data["pokemon_species"]["name"])
+        return NamedAPIResource(self.__json_data["pokemon_species"])
     

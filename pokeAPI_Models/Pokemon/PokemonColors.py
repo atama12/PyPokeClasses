@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from .PokemonSpecies import PokemonSpecies
 from typing import List
 class PokemonColors(BaseModel):
     def __init__(self,id):
@@ -20,5 +19,5 @@ class PokemonColors(BaseModel):
     
     @property
     def pokemon_species(self):
-        array : List[PokemonSpecies] = [PokemonSpecies(json_data["name"]) for json_data in self._json_data["pokemon_species"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["pokemon_species"]]
         return array

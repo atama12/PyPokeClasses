@@ -1,12 +1,4 @@
 from ..Utility.Common import *
-from ..Items.Item import Item
-from ..Pokemon.PokemonSpecies import PokemonSpecies
-from .EvolutionTrigger import EvolutionTrigger
-from ..Moves.Moves import Moves
-from ..Pokemon.Types import Types
-from ..Locations.Location import Location
-
-
 from typing import List
 
 class EvolutionChain(BaseModel):
@@ -19,7 +11,7 @@ class EvolutionChain(BaseModel):
     
     @property
     def baby_trigger_item(self):
-        return Item(self._json_data["baby_trigger_item"]["name"])
+        return NamedAPIResource(self._json_data["baby_trigger_item"])
     
     @property
     def chain(self):
@@ -36,7 +28,7 @@ class ChainLink:
     
     @property
     def species(self):
-        return PokemonSpecies(self.__json_data["species"]["name"])
+        return NamedAPIResource(self.__json_data["species"])
     
     @property
     def evolution_details(self):
@@ -54,11 +46,11 @@ class EvolutionDetail:
         
     @property
     def item(self):
-        return Item(self.__json_data["item"]["name"])
+        return NamedAPIResource(self.__json_data["item"])
     
     @property
     def trigger(self):
-        return EvolutionTrigger(self.__json_data["trigger"]["name"])
+        return NamedAPIResource(self.__json_data["trigger"])
     
     @property
     def gender(self):
@@ -66,19 +58,19 @@ class EvolutionDetail:
     
     @property
     def held_item(self):
-        return Item(self.__json_data["held_item"]["name"])
+        return NamedAPIResource(self.__json_data["held_item"])
     
     @property
     def known_move(self):
-        return Moves(self.__json_data["known_move"]["name"])
+        return NamedAPIResource(self.__json_data["known_move"])
     
     @property
     def known_move_type(self):
-        return Types(self.__json_data["known_move_type"]["name"])
+        return NamedAPIResource(self.__json_data["known_move_type"])
     
     @property
     def location(self):
-        return Location(self.__json_data["location"]["name"])
+        return NamedAPIResource(self.__json_data["location"])
     
     @property
     def min_level(self):
@@ -102,11 +94,11 @@ class EvolutionDetail:
     
     @property
     def party_species(self):
-        return PokemonSpecies(self.__json_data["party_species"]["name"])
+        return NamedAPIResource(self.__json_data["party_species"])
     
     @property
     def party_type(self):
-        return Types(self.__json_data["party_type"]["name"])
+        return NamedAPIResource(self.__json_data["party_type"])
     
     @property
     def relative_physical_stats(self):
@@ -118,7 +110,7 @@ class EvolutionDetail:
    
     @property
     def trade_species(self):
-        return PokemonSpecies(self.__json_data["trade_species"]["name"])
+        return NamedAPIResource(self.__json_data["trade_species"])
    
     @property
     def turn_upside_down(self):

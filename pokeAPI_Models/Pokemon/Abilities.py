@@ -1,9 +1,4 @@
 from ..Utility.Common import *
-from ..Games.Generation import Generation
-from ..Games.VersionGroup import VersionGroup
-from ..Utility.Language import Language
-from .Pokemon import Pokemon
-
 from typing import List
 class Abilities(BaseModel):
     def __init__(self,id):
@@ -23,7 +18,7 @@ class Abilities(BaseModel):
     
     @property
     def generation(self):
-        return Generation(self._json_data["generation"]["name"])
+        return NamedAPIResource(self._json_data["generation"])
     
     @property
     def names(self):
@@ -62,7 +57,7 @@ class AbilityEffectChange:
 
     @property
     def version_group(self):
-        return VersionGroup(self.__json_data["version_group"]["name"])
+        return NamedAPIResource(self.__json_data["version_group"])
     
 class AbilityFlavorText:
     def __init__(self,json_data):
@@ -74,11 +69,11 @@ class AbilityFlavorText:
     
     @property
     def language(self):
-        return Language(self.__json_data["language"]["name"])
+        return NamedAPIResource(self.__json_data["language"])
     
     @property
     def version_group(self):
-        return VersionGroup(self.__json_data["version_group"]["name"])
+        return NamedAPIResource(self.__json_data["version_group"])
     
 class AbilityPokemon:
     def __init__(self,json_data):
@@ -94,4 +89,4 @@ class AbilityPokemon:
     
     @property
     def pokemon(self):
-        return Pokemon(self.__json_data["pokemon"]["name"])
+        return NamedAPIResource(self.__json_data["pokemon"])

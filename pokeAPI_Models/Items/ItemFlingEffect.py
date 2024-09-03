@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from .Item import Item
 from typing import List
 
 class ItemFlingEffect(BaseModel):
@@ -21,6 +20,6 @@ class ItemFlingEffect(BaseModel):
     
     @property
     def items(self):
-        array : List[Item] = [Item(json_data["name"]) for json_data in self._json_data["items"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["items"]]
         return array
     

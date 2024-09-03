@@ -1,7 +1,4 @@
 from ..Utility.Common import *
-from .Stats import Stats
-from ..Berries.BerryFlavor import BerryFlavor
-from ..Moves.MoveBattleStyles import MoveBattleStyles
 from typing import List
 class Natures(BaseModel):
     def __init__(self,id):
@@ -17,19 +14,19 @@ class Natures(BaseModel):
     
     @property
     def decreased_stat(self):
-        return Stats(self._json_data["decreased_stat"]["name"])
+        return NamedAPIResource(self._json_data["decreased_stat"])
     
     @property
     def increased_stat(self):
-        return Stats(self._json_data["increased_stat"]["name"])
+        return NamedAPIResource(self._json_data["increased_stat"])
 
     @property
     def hates_flavor(self):
-        return BerryFlavor(self._json_data["hates_flavor"]["name"])
+        return NamedAPIResource(self._json_data["hates_flavor"])
 
     @property
     def likes_flavor(self):
-        return BerryFlavor(self._json_data["likes_flavor"]["name"])
+        return NamedAPIResource(self._json_data["likes_flavor"])
     
     @property
     def pokeathlon_stat_changes(self):
@@ -74,4 +71,4 @@ class MoveBattleStylePreference:
     
     @property
     def move_battle_style(self):
-        return MoveBattleStyles(self.__json_data["move_battle_style"]["name"])
+        return NamedAPIResource(self.__json_data["move_battle_style"])

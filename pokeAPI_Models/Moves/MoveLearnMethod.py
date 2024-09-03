@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from ..Games.VersionGroup import VersionGroup
 from typing import List
 
 class MoveLearnMethod(BaseModel):
@@ -27,5 +26,5 @@ class MoveLearnMethod(BaseModel):
     
     @property
     def version_groups(self):
-        array : List[VersionGroup] = [VersionGroup(json_data["name"]) for json_data in self._json_data["version_groups"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["version_groups"]]
         return array

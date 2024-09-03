@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from .VersionGroup import VersionGroup
 from typing import List
 
 class Version(BaseModel):
@@ -21,6 +20,6 @@ class Version(BaseModel):
     
     @property
     def version_group(self):
-        return VersionGroup(self._json_data["version_group"]["name"])
+        return NamedAPIResource(self._json_data["version_group"])
     
     

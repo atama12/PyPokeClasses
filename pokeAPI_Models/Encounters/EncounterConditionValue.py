@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from .EncounterCondition import EncounterCondition
 from typing import List
 
 class EncounterConditionValue(BaseModel):
@@ -17,7 +16,7 @@ class EncounterConditionValue(BaseModel):
 
     @property
     def condition(self):
-        return EncounterCondition(self._json_data["condition"])
+        return NamedAPIResource(self._json_data["condition"])
     
     @property
     def names(self):

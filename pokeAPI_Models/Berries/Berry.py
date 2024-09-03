@@ -43,7 +43,7 @@ class Berry(BaseModel):
     
     @property
     def firmness(self):
-        return BerryFirmness(self._json_data["firmness"]["name"])
+        return NamedAPIResource(self._json_data["firmness"])
     
     @property
     def flavors(self):
@@ -52,11 +52,11 @@ class Berry(BaseModel):
     
     @property
     def item(self):
-        return Item(self._json_data["item"]["name"])
+        return NamedAPIResource(self._json_data["item"])
     
     @property
     def natural_gift_type(self):
-        return Types(self._json_data["natural_gift_type"]["name"])
+        return NamedAPIResource(self._json_data["natural_gift_type"])
     
 class BerryFlavorMap:
     def __init__(self,json_data):
@@ -68,5 +68,5 @@ class BerryFlavorMap:
     
     @property
     def flavor(self):
-        return BerryFlavor(self.__json_data["flavor"]["name"])
+        return NamedAPIResource(self.__json_data["flavor"])
     

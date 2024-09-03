@@ -1,6 +1,4 @@
 from ..Utility.Common import *
-from ..Berries.BerryFlavor import BerryFlavor
-from ..Utility.Language import Language
 from typing import List
 
 class ContestType(BaseModel):
@@ -17,7 +15,7 @@ class ContestType(BaseModel):
     
     @property
     def berry_flavor(self):
-        return BerryFlavor(self._json_data["berry_flavor"]["name"])
+        return NamedAPIResource(self._json_data["berry_flavor"])
     
     @property
     def names(self):
@@ -38,5 +36,5 @@ class ContestName:
     
     @property
     def language(self):
-        return Language(self.__json_data["language"]["name"])
+        return NamedAPIResource(self.__json_data["language"])
     

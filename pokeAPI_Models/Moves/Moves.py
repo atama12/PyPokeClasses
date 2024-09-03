@@ -1,20 +1,4 @@
 from ..Utility.Common import *
-from ..Pokemon.Abilities import AbilityEffectChange
-from ..Contests.ContestType import ContestType
-from ..Contests.ContestEffect import ContestEffect
-from .MoveDamageClass import MoveDamageClass
-from ..Pokemon.Pokemon import Pokemon
-from ..Games.Generation import Generation
-from ..Contests.SuperContestEffect import SuperContestEffect
-from .MoveTarget import MoveTarget
-from ..Pokemon.Types import Types
-from ..Moves.Moves import Moves
-from ..Utility.Language import Language
-from ..Games.VersionGroup import VersionGroup
-from .MoveAilments import MoveAilments
-from .MoveCategory import MoveCategory
-from ..Pokemon.Stats import Stats
-from ..Pokemon.Types import Types
 from typing import List
 class Moves(BaseModel):
     def __init__(self,id):
@@ -54,15 +38,15 @@ class Moves(BaseModel):
     
     @property
     def contest_type(self):
-        return ContestType(self._json_data["contest_type"]["name"])
+        return NamedAPIResource(self._json_data["contest_type"])
 
     @property
     def contest_effect(self):
-        return ContestEffect(str(self._json_data["contest_effect"]["url"]).split('/')[-2])  
+        return APIResource(self._json_data["contest_effect"])  
     
     @property
     def damage_class(self):
-        return MoveDamageClass(self._json_data["damage_class"]["name"])
+        return NamedAPIResource(self._json_data["damage_class"])
       
     @property
     def effect_entries(self):
@@ -71,12 +55,13 @@ class Moves(BaseModel):
     
     @property
     def effect_changes(self):
+        from ..Pokemon.Abilities import AbilityEffectChange
         array : List[AbilityEffectChange] = [AbilityEffectChange(json_data) for json_data in self._json_data["effect_changes"]]
         return array
     
     @property
     def learned_by_pokemon(self):
-        array : List[Pokemon] = [Pokemon(json_data["name"]) for json_data in self._json_data["learned_by_pokemon"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["learned_by_pokemon"]]
         return array
     
     @property
@@ -86,7 +71,7 @@ class Moves(BaseModel):
     
     @property
     def generation(self):
-        return Generation(self._json_data["generation"]["name"])
+        return NamedAPIResource(self._json_data["generation"])
 
     @property
     def machines(self):
@@ -114,15 +99,15 @@ class Moves(BaseModel):
     
     @property
     def super_contest_effect(self):
-        return SuperContestEffect(str(self._json_data["super_contest_effect"]["url"]).split('/')[-2]) 
+        return APIResource(self._json_data["super_contest_effect"]) 
     
     @property
     def target(self):
-        return MoveTarget(self._json_data["target"]["name"]) 
+        return NamedAPIResource(self._json_data["target"]) 
     
     @property
     def type(self):
-        return Types(self._json_data["type"]["name"]) 
+        return NamedAPIResource(self._json_data["type"]) 
     
 class ContestComboSets:
     def __init__(self,json_data):
@@ -142,11 +127,11 @@ class ContestComboDetail:
         
     @property
     def use_before(self):
-        return Moves(self.__json_data["use_before"]["name"])
+        return NamedAPIResource(self.__json_data["use_before"])
     
     @property
     def use_after(self):
-        return Moves(self.__json_data["use_after"]["name"])  
+        return NamedAPIResource(self.__json_data["use_after"])  
     
 class MoveFlavorText:
     def __init__(self,json_data):
@@ -158,11 +143,11 @@ class MoveFlavorText:
     
     @property
     def language(self):
-        return Language(self.__json_data["language"]["name"])  
+        return NamedAPIResource(self.__json_data["language"])  
     
     @property
     def version_group(self):
-        return VersionGroup(self.__json_data["version_group"]["name"])  
+        return NamedAPIResource(self.__json_data["version_group"])  
     
 class MoveMetaData:
     def __init__(self,json_data):
@@ -170,11 +155,11 @@ class MoveMetaData:
     
     @property
     def ailment(self):
-        return MoveAilments(self.__json_data["ailment"]["name"])  
+        return NamedAPIResource(self.__json_data["ailment"])  
     
     @property
     def category(self):
-        return MoveCategory(self.__json_data["category"]["name"])  
+        return NamedAPIResource(self.__json_data["category"])  
     
     @property
     def min_hits(self):
@@ -227,7 +212,7 @@ class MoveStatChange:
     
     @property
     def stat(self):
-        return Stats(self.__json_data["stat"]["name"])  
+        return NamedAPIResource(self.__json_data["stat"])  
     
 class PastMoveStatValues:
     def __init__(self,json_data):
@@ -257,9 +242,9 @@ class PastMoveStatValues:
     
     @property
     def type(self):
-        return Types(self.__json_data["type"]["name"])  
+        return NamedAPIResource(self.__json_data["type"])  
     
     @property
     def version_group(self):
-        return VersionGroup(self.__json_data["version_group"]["name"])  
+        return NamedAPIResource(self.__json_data["version_group"])  
     

@@ -1,10 +1,4 @@
 from ..Utility.Common import *
-from .ItemFlingEffect import ItemFlingEffect
-from .ItemAttribute import ItemAttribute
-from .ItemCategory import ItemCategory
-from ..Evolution.EvolutionChain import EvolutionChain
-from ..Pokemon.Pokemon import Pokemon
-from ..Games.Version import Version
 from typing import List
 
 class Item(BaseModel):
@@ -29,16 +23,16 @@ class Item(BaseModel):
     
     @property
     def fling_effect(self):
-        return ItemFlingEffect(self._json_data["fling_effect"]["name"])
+        return NamedAPIResource(self._json_data["fling_effect"])
     
     @property
     def attributes(self):
-        array : List[ItemAttribute] = [ItemAttribute(json_data["name"]) for json_data in self._json_data["attributes"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["attributes"]]
         return array
     
     @property
     def category(self):
-        return ItemCategory(self._json_data["category"]["name"])
+        return NamedAPIResource(self._json_data["category"])
     
     @property
     def effect_entries(self):
@@ -71,7 +65,7 @@ class Item(BaseModel):
     
     @property
     def baby_trigger_for(self):
-        return EvolutionChain(str(self._json_data["baby_trigger_for"]["url"]).split('/')[-2])
+        return APIResource(self._json_data["baby_trigger_for"])
     
     @property
     def machines(self):
@@ -92,7 +86,7 @@ class ItemHolderPokemon:
         
     @property
     def pokemon(self):
-        return Pokemon(self.__json_data["pokemon"]["name"])
+        return NamedAPIResource(self.__json_data["pokemon"])
     
     @property
     def version_details(self):
@@ -109,5 +103,5 @@ class ItemHolderPokemonVersionDetail:
     
     @property
     def version(self):
-        return Version(self.__json_data["version"]["name"])
+        return NamedAPIResource(self.__json_data["version"])
     

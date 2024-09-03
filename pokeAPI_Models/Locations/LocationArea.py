@@ -1,8 +1,4 @@
 from ..Utility.Common import *
-from .Location import Location
-from ..Encounters.EncounterMethod import EncounterMethod
-from ..Games.Version import Version
-from ..Pokemon.Pokemon import Pokemon
 from typing import List
 
 class LocationArea(BaseModel):
@@ -29,7 +25,7 @@ class LocationArea(BaseModel):
 
     @property
     def location(self):
-        return Location(self._json_data["location"]["name"])
+        return NamedAPIResource(self._json_data["location"])
     
     
     @property
@@ -48,7 +44,7 @@ class EncounterMethodRate:
         
     @property
     def encounter_method(self):
-        return EncounterMethod(self.__json_data["encounter_method"]["name"])
+        return NamedAPIResource(self.__json_data["encounter_method"])
     
     @property
     def version_details(self):
@@ -65,7 +61,7 @@ class EncounterVersionDetails:
     
     @property
     def version(self):
-        return Version(self.__json_data["version"]["name"])
+        return NamedAPIResource(self.__json_data["version"])
     
 class PokemonEncounter:
     def __init__(self,json_data):
@@ -73,7 +69,7 @@ class PokemonEncounter:
         
     @property
     def pokemon(self):
-        return Pokemon(self.__json_data["pokemon"]["name"])
+        return NamedAPIResource(self.__json_data["pokemon"])
     
     @property
     def version_details(self):

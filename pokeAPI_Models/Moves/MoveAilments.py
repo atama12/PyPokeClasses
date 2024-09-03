@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from .Moves import Moves
 from typing import List
 
 class MoveAilments(BaseModel):
@@ -17,7 +16,7 @@ class MoveAilments(BaseModel):
     
     @property
     def moves(self):
-        array : List[Moves] = [Moves(json_data["name"]) for json_data in self._json_data["moves"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["moves"]]
         return array
     
     @property

@@ -1,9 +1,6 @@
 from ..Utility.Common import *
-from .Characteristic import Characteristic
-from ..Moves.MoveDamageClass import MoveDamageClass
-from ..Moves.Moves import Moves
-from .Natures import Natures
 from typing import List
+
 class Stats(BaseModel):
     def __init__(self,id):
         super().__init__("https://pokeapi.co/api/v2/stat/" + str(id))
@@ -34,12 +31,12 @@ class Stats(BaseModel):
     
     @property
     def characteristics(self):
-        array : List[Characteristic] = [Characteristic(str(json_data["url"]).split('/')[-2]) for json_data in self._json_data["characteristics"]]
+        array : List[APIResource] = [APIResource(json_data) for json_data in self._json_data["characteristics"]]
         return array
     
     @property
     def move_damage_class(self):
-        return MoveDamageClass(self._json_data["move_damage_class"]["name"])
+        return NamedAPIResource(self._json_data["move_damage_class"])
     
     @property
     def names(self):
@@ -70,7 +67,7 @@ class MoveStatAffect:
     
     @property
     def move(self):
-        return Moves(self.__json_data["move"]["name"])  
+        return NamedAPIResource(self.__json_data["move"])  
     
     
 class NatureStatAffectSets:
@@ -79,10 +76,10 @@ class NatureStatAffectSets:
         
     @property
     def increase(self):
-        array : List[Natures] = [Natures(json_data["name"]) for json_data in self.__json_data["increase"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self.__json_data["increase"]]
         return array
     
     @property
     def decrease(self):
-        array : List[Natures] = [Natures(json_data["name"]) for json_data in self.__json_data["decrease"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self.__json_data["decrease"]]
         return array

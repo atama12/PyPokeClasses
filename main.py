@@ -1,4 +1,4 @@
-from pokeAPI_Models.Pokemon import Types
+from pokeAPI_Models.Pokemon import Pokemon
 import pandas as pd
 def to_csv_ability():
     extracted_data = []
@@ -7,20 +7,20 @@ def to_csv_ability():
     
     for i in range(count):
         print(i)
-        data = Types(i+1)
-        print(data.damage_relations.no_damage_from[0].name)
-        name = ""
-        flavor_text = ""
-        # 2. 必要なキーを抽出
-        if data:
-            for name_info in data.names:
-                if name_info.language.name == 'ja-Hrkt':
-                    name =  name_info.name
+        data = Pokemon(i+1)
+        print(data.name)
+        # name = ""
+        # flavor_text = ""
+        # # 2. 必要なキーを抽出
+        # if data:
+        #     for name_info in data.names:
+        #         if name_info.language.name == 'ja-Hrkt':
+        #             name =  name_info.name
             
-            extracted_data.append({
-                "id": data.id,
-                "name": name
-            })
+        #     extracted_data.append({
+        #         "id": data.id,
+        #         "name": name
+        #     })
     # 3. DataFrameに変換
     df = pd.DataFrame(extracted_data)
 

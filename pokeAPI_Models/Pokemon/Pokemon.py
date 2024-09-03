@@ -1,15 +1,4 @@
 from ..Utility.Common import *
-from .PokemonForms import PokemonForms
-from .PokemonSpecies import PokemonSpecies
-from .Abilities import Abilities
-from .Types import Types
-from ..Games.Generation import Generation
-from ..Items.Item import Item
-from ..Games.Version import Version
-from ..Moves.Moves import Moves
-from ..Moves.MoveLearnMethod import MoveLearnMethod
-from ..Games.VersionGroup import VersionGroup
-from .Stats import Stats
 from typing import List
 
 class Pokemon(BaseModel):
@@ -45,7 +34,7 @@ class Pokemon(BaseModel):
     
     @property
     def forms(self):
-        array : List[PokemonForms] = [ PokemonForms(json_data["name"]) for json_data in self._json_data["forms"]]
+        array : List[NamedAPIResource] = [ NamedAPIResource(json_data) for json_data in self._json_data["forms"]]
         return array
     
     @property
@@ -75,7 +64,7 @@ class Pokemon(BaseModel):
         return PokemonCries(self._json_data["cries"])
     @property
     def species(self):
-        return PokemonSpecies(self._json_data["species"]["name"])
+        return NamedAPIResource(self._json_data["species"])
     @property
     def stats(self):
         array : List[PokemonStat] = [PokemonStat(json_data) for json_data in self._json_data["stats"]]
@@ -99,7 +88,7 @@ class PokemonAbility:
     
     @property
     def ability(self):
-        return Abilities(self.__json_data["ability"]["name"])
+        return NamedAPIResource(self.__json_data["ability"])
     
 class PokemonType:
     def __init__(self,json_data):
@@ -111,7 +100,7 @@ class PokemonType:
     
     @property
     def type(self):
-        return Types(self.__json_data["type"]["name"])
+        return NamedAPIResource(self.__json_data["type"])
     
 class PokemonFormType:
     def __init__(self,json_data):
@@ -123,7 +112,7 @@ class PokemonFormType:
     
     @property
     def type(self):
-        return Types(self.__json_data["type"]["name"])
+        return NamedAPIResource(self.__json_data["type"])
     
 class PokemonTypePast:
     def __init__(self,json_data):
@@ -131,7 +120,7 @@ class PokemonTypePast:
         
     @property
     def generation(self):
-        return Generation(self.__json_data["generation"]["name"])
+        return NamedAPIResource(self.__json_data["generation"])
     
     @property
     def types(self):
@@ -144,7 +133,7 @@ class PokemonHeldItem:
         
     @property
     def item(self):
-        return Item(self.__json_data["item"]["name"])
+        return NamedAPIResource(self.__json_data["item"])
     
     @property
     def version_details(self):
@@ -157,7 +146,7 @@ class PokemonHeldItemVersion:
         
     @property
     def version(self):
-        return Version(self.__json_data["version"]["name"])
+        return NamedAPIResource(self.__json_data["version"])
     
     @property
     def rarity(self):
@@ -169,7 +158,7 @@ class PokemonMove:
         
     @property
     def move(self):
-        return Moves(self.__json_data["move"]["name"])
+        return NamedAPIResource(self.__json_data["move"])
     
     @property
     def version_group_details(self):
@@ -182,11 +171,11 @@ class PokemonMoveVersion:
         
     @property
     def move_learn_method(self):
-        return MoveLearnMethod(self.__json_data["move_learn_method"]["name"])
+        return NamedAPIResource(self.__json_data["move_learn_method"])
 
     @property
     def version_group(self):
-        return VersionGroup(self.__json_data["version_group"]["name"])
+        return NamedAPIResource(self.__json_data["version_group"])
         
     @property
     def level_learned_at(self):
@@ -198,7 +187,7 @@ class PokemonStat:
         
     @property
     def stat(self):
-        return Stats(self.__json_data["stat"]["name"])
+        return NamedAPIResource(self.__json_data["stat"])
         
     @property
     def effort(self):

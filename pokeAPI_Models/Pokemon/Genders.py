@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from .PokemonSpecies import PokemonSpecies
 from typing import List
 class Genders(BaseModel):
     def __init__(self,id):
@@ -20,7 +19,7 @@ class Genders(BaseModel):
     
     @property
     def required_for_evolution(self):
-        array : List[PokemonSpecies] = [PokemonSpecies(json_data["name"]) for json_data in self._json_data["required_for_evolution"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["required_for_evolution"]]
         return array
     
     
@@ -35,4 +34,4 @@ class PokemonSpeciesGender:
     
     @property
     def pokemon_species(self):
-        return PokemonSpecies(self.__json_data["pokemon_species"]["name"])
+        return NamedAPIResource(self.__json_data["pokemon_species"])

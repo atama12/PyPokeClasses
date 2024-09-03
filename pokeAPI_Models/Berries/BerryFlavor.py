@@ -1,6 +1,4 @@
 from ..Utility.Common import *
-from ..Contests.ContestType import ContestType
-from .Berry import Berry
 from typing import List
 
 class BerryFlavor(BaseModel):
@@ -22,7 +20,7 @@ class BerryFlavor(BaseModel):
     
     @property
     def contest_type(self):
-        return ContestType(self._json_data["contest_type"]["name"])
+        return NamedAPIResource(self._json_data["contest_type"])
 
     @property
     def names(self):
@@ -39,5 +37,5 @@ class FlavorBerryMap:
     
     @property
     def berry(self):
-        return Berry(self.__json_data["berry"]["name"])
+        return NamedAPIResource(self.__json_data["berry"])
     

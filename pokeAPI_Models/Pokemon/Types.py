@@ -1,9 +1,6 @@
 from ..Utility.Common import *
-from ..Games.Generation import Generation
-from ..Moves.MoveDamageClass import MoveDamageClass
-from ..Moves.Moves import Moves
-from ..Pokemon.Pokemon import Pokemon
 from typing import List
+
 class Types(BaseModel):
     def __init__(self,id):
         super().__init__("https://pokeapi.co/api/v2/type/" + str(id))
@@ -32,11 +29,11 @@ class Types(BaseModel):
     
     @property
     def generation(self):
-        return Generation(self._json_data["generation"]["name"])
+        return NamedAPIResource(self._json_data["generation"])
     
     @property
     def move_damage_class(self):
-        return MoveDamageClass(self._json_data["move_damage_class"]["name"])
+        return NamedAPIResource(self._json_data["move_damage_class"])
     
     @property
     def names(self):
@@ -50,7 +47,7 @@ class Types(BaseModel):
     
     @property
     def moves(self):
-        array : List[Moves] = [Moves(json_data["name"]) for json_data in self._json_data["moves"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["moves"]]
         return array
     
 class TypePokemon:
@@ -63,7 +60,7 @@ class TypePokemon:
     
     @property
     def pokemon(self):
-        return Pokemon(self.__json_data["pokemon"]["name"])
+        return NamedAPIResource(self.__json_data["pokemon"])
       
     
     
@@ -73,32 +70,32 @@ class TypeRelations:
         
     @property
     def no_damage_to(self):
-        array : List[Types] = [Types(json_data["name"]) for json_data in self.__json_data["no_damage_to"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self.__json_data["no_damage_to"]]
         return array
     
     @property
     def half_damage_to(self):
-        array : List[Types] = [Types(json_data["name"]) for json_data in self.__json_data["half_damage_to"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self.__json_data["half_damage_to"]]
         return array
     
     @property
     def double_damage_to(self):
-        array : List[Types] = [Types(json_data["name"]) for json_data in self.__json_data["double_damage_to"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self.__json_data["double_damage_to"]]
         return array
     
     @property
     def no_damage_from(self):
-        array : List[Types] = [Types(json_data["name"]) for json_data in self.__json_data["no_damage_from"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self.__json_data["no_damage_from"]]
         return array
     
     @property
     def half_damage_from(self):
-        array : List[Types] = [Types(json_data["name"]) for json_data in self.__json_data["half_damage_from"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self.__json_data["half_damage_from"]]
         return array
     
     @property
     def double_damage_from(self):
-        array : List[Types] = [Types(json_data["name"]) for json_data in self.__json_data["double_damage_from"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self.__json_data["double_damage_from"]]
         return array
     
 class TypeRelationsPast:
@@ -107,7 +104,7 @@ class TypeRelationsPast:
         
     @property
     def generation(self):
-        return Generation(self.__json_data["generation"]["name"])
+        return NamedAPIResource(self.__json_data["generation"])
     
     @property
     def damage_relations(self):

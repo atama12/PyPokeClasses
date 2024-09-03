@@ -1,6 +1,4 @@
 from ..Utility.Common import *
-from .Item import Item
-from .ItemPocket import ItemPocket
 from typing import List
 
 class ItemCategory(BaseModel):
@@ -17,7 +15,7 @@ class ItemCategory(BaseModel):
     
     @property
     def items(self):
-        array : List[Item] = [Item(json_data["name"]) for json_data in self._json_data["items"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["items"]]
         return array
     
     @property
@@ -27,5 +25,5 @@ class ItemCategory(BaseModel):
     
     @property
     def pocket(self):
-        return ItemPocket(self._json_data["pocket"]["name"])
+        return NamedAPIResource(self._json_data["pocket"])
     

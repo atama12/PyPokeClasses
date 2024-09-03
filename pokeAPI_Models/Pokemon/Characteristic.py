@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from .Stats import Stats
 from typing import List
 class Characteristic(BaseModel):
     def __init__(self,id):
@@ -20,7 +19,7 @@ class Characteristic(BaseModel):
     
     @property
     def highest_stat(self):
-        return Stats(self._json_data["highest_stat"]["name"])
+        return NamedAPIResource(self._json_data["highest_stat"])
     
     @property
     def descriptions(self):  

@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from ..Locations.LocationArea import LocationArea
 from typing import List
 class PokemonLocationAreas(BaseModel):
     def __init__(self,id):
@@ -7,7 +6,7 @@ class PokemonLocationAreas(BaseModel):
         
     @property
     def location_area(self):
-        return LocationArea(self._json_data["location_area"]["name"])
+        return NamedAPIResource(self._json_data["location_area"])
     
     @property
     def version_details(self):

@@ -1,7 +1,4 @@
 from ..Utility.Common import *
-from ..Locations.Region import Region
-from .VersionGroup import VersionGroup
-from ..Pokemon.PokemonSpecies import PokemonSpecies
 from typing import List
 
 class Pokedex(BaseModel):
@@ -37,11 +34,11 @@ class Pokedex(BaseModel):
     
     @property
     def region(self):
-        return Region(self._json_data["region"]["name"])
+        return NamedAPIResource(self._json_data["region"])
     
     @property
     def version_groups(self):
-        array : List[VersionGroup] = [VersionGroup(json_data["name"]) for json_data in self._json_data["version_groups"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["version_groups"]]
         return array
     
     
@@ -56,5 +53,5 @@ class PokemonEntry:
     
     @property
     def pokemon_species(self):
-        return PokemonSpecies(self.__json_data["pokemon_species"]["name"])
+        return NamedAPIResource(self.__json_data["pokemon_species"])
     

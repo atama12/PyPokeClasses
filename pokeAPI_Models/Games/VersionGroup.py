@@ -1,10 +1,4 @@
 from ..Utility.Common import *
-from ..Games.Generation import Generation
-from ..Moves.MoveLearnMethod import MoveLearnMethod
-from .Pokedex import Pokedex
-from ..Locations.Region import Region
-from .Version import Version
-
 from typing import List
 
 class VersionGroup(BaseModel):
@@ -26,25 +20,25 @@ class VersionGroup(BaseModel):
     
     @property
     def generation(self):
-        return Generation(self._json_data["generation"]["name"])
+        return NamedAPIResource(self._json_data["generation"])
     
     @property
     def move_learn_method(self):
-        array : List[MoveLearnMethod] = [MoveLearnMethod(json_data["name"]) for json_data in self._json_data["move_learn_method"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["move_learn_method"]]
         return array
     
     @property
     def pokedexes(self):
-        array : List[Pokedex] = [Pokedex(json_data["name"]) for json_data in self._json_data["pokedexes"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["pokedexes"]]
         return array
 
     @property
     def regions(self):
-        array : List[Region] = [Region(json_data["name"]) for json_data in self._json_data["regions"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["regions"]]
         return array
     
     @property
     def versions(self):
-        array : List[Version] = [Version(json_data["name"]) for json_data in self._json_data["versions"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["versions"]]
         return array
     

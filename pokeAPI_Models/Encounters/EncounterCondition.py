@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from .EncounterConditionValue import EncounterConditionValue
 from typing import List
 
 class EncounterCondition(BaseModel):
@@ -22,7 +21,7 @@ class EncounterCondition(BaseModel):
     
     @property
     def values(self):
-        array : List[EncounterConditionValue] = [EncounterConditionValue(json_data["name"]) for json_data in self._json_data["values"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["values"]]
         return array
 
 

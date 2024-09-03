@@ -1,6 +1,4 @@
 from ..Utility.Common import *
-from .Pokemon import PokemonFormType,Pokemon
-from ..Games.VersionGroup import VersionGroup
 from typing import List
 class PokemonForms(BaseModel):
     def __init__(self,id):
@@ -40,10 +38,11 @@ class PokemonForms(BaseModel):
     
     @property
     def pokemon(self):
-        return Pokemon(self._json_data["pokemon"]["name"])
+        return NamedAPIResource(self._json_data["pokemon"])
     
     @property
     def types(self):
+        from .Pokemon import PokemonFormType
         array : List[PokemonFormType] = [PokemonFormType(json_data) for json_data in self._json_data["types"]]
         return array
     
@@ -53,7 +52,7 @@ class PokemonForms(BaseModel):
     
     @property
     def vertion_group(self):
-        return VersionGroup(self._json_data["vertion_group"]["name"])
+        return NamedAPIResource(self._json_data["vertion_group"])
     
     @property
     def names(self):

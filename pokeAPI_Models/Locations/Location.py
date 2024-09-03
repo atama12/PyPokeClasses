@@ -1,6 +1,4 @@
 from ..Utility.Common import *
-from .Region import Region
-from .LocationArea import LocationArea
 from typing import List
 
 class Location(BaseModel):
@@ -18,7 +16,7 @@ class Location(BaseModel):
     
     @property
     def region(self):
-        return Region(self._json_data["region"]["name"])
+        return NamedAPIResource(self._json_data["region"])
   
     @property
     def names(self):
@@ -32,5 +30,5 @@ class Location(BaseModel):
     
     @property
     def areas(self):
-        array : List[LocationArea] = [LocationArea(json_data["name"]) for json_data in self._json_data["areas"]]
+        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["areas"]]
         return array
