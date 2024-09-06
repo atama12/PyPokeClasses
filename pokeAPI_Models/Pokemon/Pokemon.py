@@ -162,7 +162,7 @@ class PokemonMove:
     
     @property
     def version_group_details(self):
-        array : List[PokemonMoveVersion] = [PokemonMoveVersion(json_data) for json_data in self._json_data["version_group_details"]]
+        array : List[PokemonMoveVersion] = [PokemonMoveVersion(json_data) for json_data in self.__json_data["version_group_details"]]
         return array
     
 class PokemonMoveVersion:
@@ -210,8 +210,324 @@ class PokemonSprites:
         return str(self.__json_data["front_shiny"])
     
     @property
+    def front_female(self):
+        return str(self.__json_data["front_female"])
+    
+    @property
+    def front_shiny_female(self):
+        return str(self.__json_data["front_shiny_female"])
+    
+    @property
+    def back_default(self):
+        return str(self.__json_data["back_default"])
+    
+    @property
+    def back_shiny(self):
+        return str(self.__json_data["back_shiny"])
+    
+    @property
+    def back_female(self):
+        return str(self.__json_data["back_female"])
+    
+    @property
+    def back_shiny_female(self):
+        return str(self.__json_data["back_shiny_female"])
+    
+    @property
+    def other(self):
+        return PokemonSpritesOther(self.__json_data["other"])
+    
+    @property
+    def versions(self):
+        return PokemonSpritesVersion(self.__json_data["versions"])
+
+class PokemonSpritesVersion:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def generation_i(self):
+        return PokemonSpritesVersionGi(self.__json_data["generation-i"])
+
+    @property
+    def generation_ii(self):
+        return PokemonSpritesVersionGii(self.__json_data["generation-ii"])
+
+    @property
+    def generation_iii(self):
+        return PokemonSpritesVersionGiii(self.__json_data["generation-iii"])
+
+    @property
+    def generation_iv(self):
+        return PokemonSpritesVersionGiv(self.__json_data["generation-iv"])
+
+    @property
+    def generation_v(self):
+        return PokemonSpritesVersionGv(self.__json_data["generation-v"])
+
+    @property
+    def generation_vi(self):
+        return PokemonSpritesVersionGvi(self.__json_data["generation-vi"])
+
+    @property
+    def generation_vii(self):
+        return PokemonSpritesVersionGvii(self.__json_data["generation-vii"])
+
+    @property
+    def generation_viii(self):
+        return PokemonSpritesVersionGviii(self.__json_data["generation-viii"])
+
+class PokemonSpritesVersionGi:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def red_blue(self):
+        return PokemonSpritesRedBlueYellow(self.__json_data["red-blue"])
+    
+    @property
+    def yellow(self):
+        return PokemonSpritesRedBlueYellow(self.__json_data["yellow"])
+
+class PokemonSpritesVersionGii:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def crystal(self):
+        return PokemonSpritesCrystal(self.__json_data["crystal"])
+    
+    @property
+    def gold(self):
+        return PokemonSpritesGoldSilver(self.__json_data["gold"])
+
+    @property
+    def silver(self):
+        return PokemonSpritesGoldSilver(self.__json_data["silver"])
+
+class PokemonSpritesVersionGiii:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def emerald(self):
+        return PokemonSpritesEmerald(self.__json_data["emerald"])
+    
+    @property
+    def firered_leafgreen(self):
+        return PokemonSpritesFRRG(self.__json_data["firered-leafgreen"])
+
+    @property
+    def ruby_sapphire(self):
+        return PokemonSpritesRS(self.__json_data["ruby-sapphire"])
+
+class PokemonSpritesVersionGiv:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def diamond_pearl(self):
+        return PokemonSpritesDP(self.__json_data["diamond-pearl"])
+    
+    @property
+    def heartgold_soulsilver(self):
+        return PokemonSpritesHGSS(self.__json_data["heartgold-soulsilver"])
+
+    @property
+    def platinum(self):
+        return PokemonSpritesPt(self.__json_data["platinum"])
+       
+class PokemonSpritesVersionGv:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def black_white(self):
+        return PokemonSpritesBW(self.__json_data["black-white"])
+    
+class PokemonSpritesVersionGvi:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def omegaruby_alphasapphire(self):
+        return PokemonSpritesORAS(self.__json_data["omegaruby-alphasapphire"])
+    
+    @property
+    def x_y(self):
+        return PokemonSpritesXY(self.__json_data["x-y"])
+    
+class PokemonSpritesVersionGvii:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def icons(self):
+        return PokemonSpritesIcons(self.__json_data["icons"])
+    
+    @property
+    def ultra_sun_ultra_moon(self):
+        return PokemonSpritesUSUM(self.__json_data["ultra-sun-ultra-moon"])
+    
+class PokemonSpritesVersionGviii:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def icons(self):
+        return PokemonSpritesIcons(self.__json_data["icons"])
+    
+class PokemonSpritesRedBlueYellow:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+    
+    @property
+    def back_default(self):
+        return str(self.__json_data["back_default"])
+    
+    @property
+    def back_gray(self):
+        return str(self.__json_data["back_gray"])
+    
+    @property
+    def back_transparent(self):
+        return str(self.__json_data["back_transparent"])
+    
+    @property
     def front_default(self):
         return str(self.__json_data["front_default"])
+    
+    @property
+    def front_gray(self):
+        return str(self.__json_data["front_gray"])
+    
+    @property
+    def front_transparent(self):
+        return str(self.__json_data["front_transparent"])
+    
+class PokemonSpritesCrystal:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+    
+    @property
+    def back_default(self):
+        return str(self.__json_data["back_default"])
+    
+    @property
+    def back_shiny(self):
+        return str(self.__json_data["back_shiny"])
+    
+    @property
+    def back_shiny_transparent(self):
+        return str(self.__json_data["back_shiny_transparent"])
+    
+    @property
+    def back_transparent(self):
+        return str(self.__json_data["back_transparent"])
+    
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
+    
+    @property
+    def front_shiny_transparent(self):
+        return str(self.__json_data["front_shiny_transparent"])
+    
+    @property
+    def front_transparent(self):
+        return str(self.__json_data["front_transparent"])
+
+class PokemonSpritesGoldSilver:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+    
+    @property
+    def back_default(self):
+        return str(self.__json_data["back_default"])
+    
+    @property
+    def back_shiny(self):
+        return str(self.__json_data["back_shiny"])
+    
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
+    
+    @property
+    def front_transparent(self):
+        return str(self.__json_data["front_transparent"])
+    
+class PokemonSpritesEmerald:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+    
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
+    
+class PokemonSpritesFRRG:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+
+    @property
+    def back_default(self):
+        return str(self.__json_data["back_default"])
+    
+    @property
+    def back_shiny(self):
+        return str(self.__json_data["back_shiny"])
+     
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
+    
+class PokemonSpritesRS:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+
+    @property
+    def back_default(self):
+        return str(self.__json_data["back_default"])
+    
+    @property
+    def back_shiny(self):
+        return str(self.__json_data["back_shiny"])
+     
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
+    
+class PokemonSpritesDP:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
     
     @property
     def front_female(self):
@@ -237,6 +553,281 @@ class PokemonSprites:
     def back_shiny_female(self):
         return str(self.__json_data["back_shiny_female"])
     
+class PokemonSpritesHGSS:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
+    
+    @property
+    def front_female(self):
+        return str(self.__json_data["front_female"])
+    
+    @property
+    def front_shiny_female(self):
+        return str(self.__json_data["front_shiny_female"])
+    
+    @property
+    def back_default(self):
+        return str(self.__json_data["back_default"])
+    
+    @property
+    def back_shiny(self):
+        return str(self.__json_data["back_shiny"])
+    
+    @property
+    def back_female(self):
+        return str(self.__json_data["back_female"])
+    
+    @property
+    def back_shiny_female(self):
+        return str(self.__json_data["back_shiny_female"])
+
+class PokemonSpritesPt:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
+    
+    @property
+    def front_female(self):
+        return str(self.__json_data["front_female"])
+    
+    @property
+    def front_shiny_female(self):
+        return str(self.__json_data["front_shiny_female"])
+    
+    @property
+    def back_default(self):
+        return str(self.__json_data["back_default"])
+    
+    @property
+    def back_shiny(self):
+        return str(self.__json_data["back_shiny"])
+    
+    @property
+    def back_female(self):
+        return str(self.__json_data["back_female"])
+    
+    @property
+    def back_shiny_female(self):
+        return str(self.__json_data["back_shiny_female"])
+
+class PokemonSpritesBW:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+       
+    @property
+    def animated(self):
+        return PokemonSpritesAnimated(self.__json_data["animated"])
+     
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
+    
+    @property
+    def front_female(self):
+        return str(self.__json_data["front_female"])
+    
+    @property
+    def front_shiny_female(self):
+        return str(self.__json_data["front_shiny_female"])
+    
+    @property
+    def back_default(self):
+        return str(self.__json_data["back_default"])
+    
+    @property
+    def back_shiny(self):
+        return str(self.__json_data["back_shiny"])
+    
+    @property
+    def back_female(self):
+        return str(self.__json_data["back_female"])
+    
+    @property
+    def back_shiny_female(self):
+        return str(self.__json_data["back_shiny_female"])
+
+class PokemonSpritesORAS:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+       
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
+    
+    @property
+    def front_female(self):
+        return str(self.__json_data["front_female"])
+    
+    @property
+    def front_shiny_female(self):
+        return str(self.__json_data["front_shiny_female"])
+    
+class PokemonSpritesXY:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+       
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
+    
+    @property
+    def front_female(self):
+        return str(self.__json_data["front_female"])
+    
+    @property
+    def front_shiny_female(self):
+        return str(self.__json_data["front_shiny_female"])
+
+class PokemonSpritesUSUM:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+       
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
+    
+    @property
+    def front_female(self):
+        return str(self.__json_data["front_female"])
+    
+    @property
+    def front_shiny_female(self):
+        return str(self.__json_data["front_shiny_female"])
+
+class PokemonSpritesIcons:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+       
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_female(self):
+        return str(self.__json_data["front_female"])
+    
+class PokemonSpritesAnimated:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+       
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
+    
+    @property
+    def front_female(self):
+        return str(self.__json_data["front_female"])
+    
+    @property
+    def front_shiny_female(self):
+        return str(self.__json_data["front_shiny_female"])
+    
+    @property
+    def back_default(self):
+        return str(self.__json_data["back_default"])
+    
+    @property
+    def back_shiny(self):
+        return str(self.__json_data["back_shiny"])
+    
+    @property
+    def back_female(self):
+        return str(self.__json_data["back_female"])
+    
+    @property
+    def back_shiny_female(self):
+        return str(self.__json_data["back_shiny_female"])
+    
+class PokemonSpritesOther:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def dream_world(self):
+        return PokemonSprites2(self.__json_data["dream_world"])
+    
+    @property
+    def home(self):
+        return PokemonSprites2(self.__json_data["home"])
+    
+    @property
+    def official_artwork(self):
+        return PokemonSprites2(self.__json_data["official-artwork"])
+    
+    @property
+    def showdown(self):
+        return PokemonSprites2(self.__json_data["showdown"])
+    
+class PokemonSprites2:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def front_default(self):
+        return str(self.__json_data["front_default"])
+    
+    @property
+    def front_shiny(self):
+        return str(self.__json_data["front_shiny"])
+    
+    @property
+    def front_female(self):
+        return str(self.__json_data["front_female"])
+    
+    @property
+    def front_shiny_female(self):
+        return str(self.__json_data["front_shiny_female"])
+    
+    @property
+    def back_default(self):
+        return str(self.__json_data["back_default"])
+    
+    @property
+    def back_shiny(self):
+        return str(self.__json_data["back_shiny"])
+    
+    @property
+    def back_female(self):
+        return str(self.__json_data["back_female"])
+    
+    @property
+    def back_shiny_female(self):
+        return str(self.__json_data["back_shiny_female"])
 
 class PokemonCries:
     def __init__(self,json_data):

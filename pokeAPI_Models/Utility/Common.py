@@ -11,6 +11,7 @@ class BaseModel:
         
     def make_request(self,url):
         response = self.session.get(url)
+        self._status_code = response.status_code
         if response.status_code == 200:
             return response.json()
         elif response.status_code == 404:
@@ -18,6 +19,10 @@ class BaseModel:
             return None
         else:
             response.raise_for_status()
+            
+    @property
+    def status_code(self):
+        return self._status_code
             
             
 class APIResource:

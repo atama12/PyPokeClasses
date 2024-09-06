@@ -1,33 +1,39 @@
 from pokeAPI_Models.Pokemon import Pokemon
-import pandas as pd
-def to_csv_ability():
-    extracted_data = []
-    
-    count = 18
-    
-    for i in range(count):
-        print(i)
-        data = Pokemon(i+1)
-        print(data.name)
-        # name = ""
-        # flavor_text = ""
-        # # 2. 必要なキーを抽出
-        # if data:
-        #     for name_info in data.names:
-        #         if name_info.language.name == 'ja-Hrkt':
-        #             name =  name_info.name
-            
-        #     extracted_data.append({
-        #         "id": data.id,
-        #         "name": name
-        #     })
-    # 3. DataFrameに変換
-    df = pd.DataFrame(extracted_data)
+import json
+with open('tests/Pokemon/files/pokemon.json', 'r') as file:
+    test =  json.load(file)
+a = Pokemon(1)
 
-    # CSVファイルとして保存
-    df.to_csv("type.csv", index=False)
+print(type(a.name))
+# import pandas as pd
+# def to_csv_ability():
+#     extracted_data = []
     
-to_csv_ability()
+#     count = 18
+    
+#     for i in range(count):
+#         print(i)
+#         data = Pokemon(i+1)
+#         print(data.name)
+#         # name = ""
+#         # flavor_text = ""
+#         # # 2. 必要なキーを抽出
+#         # if data:
+#         #     for name_info in data.names:
+#         #         if name_info.language.name == 'ja-Hrkt':
+#         #             name =  name_info.name
+            
+#         #     extracted_data.append({
+#         #         "id": data.id,
+#         #         "name": name
+#         #     })
+#     # 3. DataFrameに変換
+#     df = pd.DataFrame(extracted_data)
+
+#     # CSVファイルとして保存
+#     df.to_csv("type.csv", index=False)
+    
+# to_csv_ability()
 # ポケモンデータの取得とリストへの追加
 #for i in range(1):
     
@@ -70,4 +76,17 @@ to_csv_ability()
 # df = pd.DataFrame(extracted_data)
 
 # # CSVファイルとして保存
-# df.to_csv("pokemon_data.csv", index=False)
+# # df.to_csv("pokemon_data.csv", index=False)
+# import json
+# import requests
+
+# target = 'language'
+# url = 'https://pokeapi.co/api/v2/'+target+'/1'
+# response = requests.get(url)
+
+# # レスポンスのJSONデータを取得
+# data = response.json()
+
+# # JSONデータをファイルに保存
+# with open(target + '.json', 'w') as file:
+#     json.dump(data, file, indent=4)
