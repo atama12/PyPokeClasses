@@ -6,8 +6,18 @@
                 "url": "https://pokeapi.co/api/v2/type/2/"
             }
         ],
-        "double_damage_to": [],
-        "half_damage_from": [],
+        "double_damage_to": [            
+            {
+            "name": "normal",
+            "url": "https://pokeapi.co/api/v2/type/233/"
+        }
+        ],
+        "half_damage_from": [            
+            {
+            "name": "fling",
+            "url": "https://pokeapi.co/api/v2/type/223/"
+        }
+        ],
         "half_damage_to": [
             {
                 "name": "rock",
@@ -26,8 +36,8 @@
         ],
         "no_damage_to": [
             {
-                "name": "ghost",
-                "url": "https://pokeapi.co/api/v2/type/8/"
+                "name": "ghosttt",
+                "url": "https://pokeapi.co/api/v2/type/8a/"
             }
         ]
     },
@@ -890,6 +900,13 @@
     "names": [
         {
             "language": {
+                "name": "en",
+                "url": "https://pokeapi.co/api/v2/language/9/"
+            },
+            "name": "Normal"
+        },
+        {
+            "language": {
                 "name": "ja-Hrkt",
                 "url": "https://pokeapi.co/api/v2/language/1/"
             },
@@ -959,7 +976,50 @@
             "name": "\u4e00\u822c"
         }
     ],
-    "past_damage_relations": [],
+    "past_damage_relations": [    {
+        "generation": {
+          "name": "generation-v",
+          "url": "https://pokeapi.co/api/v2/generation/5/"
+        },
+        "damage_relations": {
+          "no_damage_to": [
+            {
+              "name": "normal",
+              "url": "https://pokeapi.co/api/v2/type/1/"
+            }
+          ],
+          "half_damage_to": [
+            {
+              "name": "steel",
+              "url": "https://pokeapi.co/api/v2/type/9/"
+            }
+          ],
+          "double_damage_to": [
+            {
+              "name": "ghost",
+              "url": "https://pokeapi.co/api/v2/type/8/"
+            }
+          ],
+          "no_damage_from": [
+            {
+              "name": "normal",
+              "url": "https://pokeapi.co/api/v2/type/1/"
+            }
+          ],
+          "half_damage_from": [
+            {
+              "name": "poison",
+              "url": "https://pokeapi.co/api/v2/type/4/"
+            }
+          ],
+          "double_damage_from": [
+            {
+              "name": "ghost",
+              "url": "https://pokeapi.co/api/v2/type/8/"
+            }
+          ]
+        }
+      }],
     "pokemon": [
         {
             "pokemon": {

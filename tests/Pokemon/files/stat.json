@@ -1,11 +1,29 @@
 {
     "affecting_moves": {
-        "decrease": [],
-        "increase": []
+        "decrease": [      {
+            "change": 2,
+            "move": {
+              "name": "swords-dance",
+              "url": "https://pokeapi.co/api/v2/move/14/"
+            }
+          }],
+        "increase": [      {
+            "change": -1,
+            "move": {
+              "name": "growl",
+              "url": "https://pokeapi.co/api/v2/move/45/"
+            }
+          }]
     },
     "affecting_natures": {
-        "decrease": [],
-        "increase": []
+        "decrease": [      {
+            "name": "bold",
+            "url": "https://pokeapi.co/api/v2/nature/2/"
+          }],
+        "increase": [      {
+            "name": "lonely",
+            "url": "https://pokeapi.co/api/v2/nature/6/"
+          }]
     },
     "characteristics": [
         {

@@ -1,13 +1,26 @@
 import requests_cache
-from typing import List
+from typing import List,Any,Type,Union
 # requests_cache を有効化
 import requests
 
-
+class Functions:
+    def convert_to_type(json_data:dict,key: str,target_type: Type):
+        if key in json_data and json_data.get(key) is not None:
+            return target_type(json_data.get(key))
+        else:
+            return None
+        
+    def convert_to_type_list(json_data:dict,key: str,target_type: Type):
+        if key in json_data and json_data.get(key) is not None:
+            array : List[target_type] = [target_type(js) for js in json_data.get(key)]
+            return array
+            #return target_type(json_data.get(key))
+        else:
+            return None
 class BaseModel:
     def __init__(self,url):
         self.session = requests_cache.CachedSession('pokemon')
-        self._json_data = self.make_request(url)
+        self._json_data : dict | None = self.make_request(url)
         
     def make_request(self,url):
         response = self.session.get(url)
@@ -134,8 +147,9 @@ class NamedAPIResource:
         self.__json_data = json_data
         
     @property
-    def name(self):
+    def name(self) -> Union[str,None]:
         return str(self.__json_data["name"])
+        #return self.convert_to_type(self.__json_data,"name",str)
     
     @property
     def url(self):

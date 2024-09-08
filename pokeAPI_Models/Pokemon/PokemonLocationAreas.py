@@ -5,10 +5,11 @@ class PokemonLocationAreas(BaseModel):
         super().__init__("https://pokeapi.co/api/v2/pokemon/" + str(id) + "/encounters")
         
     @property
-    def location_area(self):
-        return NamedAPIResource(self._json_data["location_area"])
+    def location_area(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"location_area",NamedAPIResource)
+    
     
     @property
-    def version_details(self):
-        array : List[VersionEncounterDetail] = [VersionEncounterDetail(json_data) for json_data in self._json_data["version_details"]]
-        return array
+    def version_details(self) -> Union[List,None]:
+        return Functions.convert_to_type(self._json_data,"version_details",VersionEncounterDetail)
+    

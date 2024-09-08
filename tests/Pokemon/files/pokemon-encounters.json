@@ -9,7 +9,10 @@
                 "encounter_details": [
                     {
                         "chance": 100,
-                        "condition_values": [],
+                        "condition_values": [              {
+                            "name": "time-morning",
+                            "url": "https://pokeapi.co/api/v2/encounter-condition-value/3/"
+                          }],
                         "max_level": 10,
                         "method": {
                             "name": "gift",

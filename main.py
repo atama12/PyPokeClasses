@@ -1,10 +1,12 @@
-from pokeAPI_Models.Pokemon import Pokemon
+from pokeAPI_Models.Pokemon import PokemonLocationAreas
 import json
-with open('tests/Pokemon/files/pokemon.json', 'r') as file:
-    test =  json.load(file)
-a = Pokemon(1)
 
-print(type(a.name))
+# with open('tests/Pokemon/files/pokemon.json', 'r') as file:
+#     test =  json.load(file)
+a = PokemonLocationAreas(1)
+print(a[0].location_area.name)
+
+# print(type(a.name))
 # import pandas as pd
 # def to_csv_ability():
 #     extracted_data = []

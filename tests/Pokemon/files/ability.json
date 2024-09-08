@@ -779,6 +779,13 @@
     "names": [
         {
             "language": {
+                "name": "fr",
+                "url": "https://pokeapi.co/api/v2/language/5/"
+            },
+            "name": "Puanteur"
+        },
+        {
+            "language": {
                 "name": "ja-Hrkt",
                 "url": "https://pokeapi.co/api/v2/language/1/"
             },
@@ -798,13 +805,7 @@
             },
             "name": "\u60e1\u81ed"
         },
-        {
-            "language": {
-                "name": "fr",
-                "url": "https://pokeapi.co/api/v2/language/5/"
-            },
-            "name": "Puanteur"
-        },
+
         {
             "language": {
                 "name": "de",

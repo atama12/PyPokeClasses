@@ -1,73 +1,28 @@
 from ..Utility.Common import *
 from typing import List
-
-class Stats(BaseModel):
-    def __init__(self,id):
-        super().__init__("https://pokeapi.co/api/v2/stat/" + str(id))
-        
-    @property
-    def id(self):
-        return int(self._json_data["id"])
-    
-    @property
-    def name(self):
-        return str(self._json_data["name"])
-    
-    @property
-    def game_index(self):
-        return int(self._json_data["game_index"])
-    
-    @property
-    def is_battle_only(self):
-        return bool(self._json_data["is_battle_only"])
-    
-    @property
-    def affecting_moves(self):
-        return MoveStatAffectSets(self._json_data["affecting_moves"])
-    
-    @property
-    def affecting_natures(self):
-        return NatureStatAffectSets(self._json_data["affecting_natures"])
-    
-    @property
-    def characteristics(self):
-        array : List[APIResource] = [APIResource(json_data) for json_data in self._json_data["characteristics"]]
-        return array
-    
-    @property
-    def move_damage_class(self):
-        return NamedAPIResource(self._json_data["move_damage_class"])
-    
-    @property
-    def names(self):
-        array : List[Name] = [Name(json_data) for json_data in self._json_data["names"]]
-        return array
-
 class MoveStatAffectSets:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def increase(self):
-        array : List[MoveStatAffect] = [MoveStatAffect(json_data) for json_data in self.__json_data["increase"]]
-        return array
+    def increase(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self.__json_data,"increase",MoveStatAffect)
     
     @property
-    def decrease(self):
-        array : List[MoveStatAffect] = [MoveStatAffect(json_data) for json_data in self.__json_data["decrease"]]
-        return array
+    def decrease(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self.__json_data,"decrease",MoveStatAffect)
       
 class MoveStatAffect:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def change(self):
-        return int(self.__json_data["change"])
+    def change(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"change",int)
     
     @property
-    def move(self):
-        return NamedAPIResource(self.__json_data["move"])  
+    def move(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"move",NamedAPIResource)
     
     
 class NatureStatAffectSets:
@@ -75,11 +30,50 @@ class NatureStatAffectSets:
         self.__json_data = json_data
         
     @property
-    def increase(self):
-        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self.__json_data["increase"]]
-        return array
+    def increase(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self.__json_data,"increase",NamedAPIResource)
     
     @property
-    def decrease(self):
-        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self.__json_data["decrease"]]
-        return array
+    def decrease(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self.__json_data,"decrease",NamedAPIResource)
+
+class Stats(BaseModel):
+    def __init__(self,id):
+        super().__init__("https://pokeapi.co/api/v2/stat/" + str(id))
+        
+    @property
+    def id(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"id",int)
+    
+    @property
+    def name(self) -> Union[str,None]:
+        return Functions.convert_to_type(self._json_data,"name",str)
+    
+    @property
+    def game_index(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"game_index",int)
+    
+    @property
+    def is_battle_only(self) -> Union[bool,None]:
+        return Functions.convert_to_type(self._json_data,"is_battle_only",bool)
+    
+    @property
+    def affecting_moves(self) -> Union[MoveStatAffectSets,None]:
+        return Functions.convert_to_type(self._json_data,"affecting_moves",MoveStatAffectSets)
+    
+    @property
+    def affecting_natures(self) -> Union[NatureStatAffectSets,None]:
+        return Functions.convert_to_type(self._json_data,"affecting_natures",NatureStatAffectSets)
+    
+    @property
+    def characteristics(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"characteristics",APIResource)
+    
+    @property
+    def move_damage_class(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"move_damage_class",NamedAPIResource)
+    
+    @property
+    def names(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"names",Name)
+
