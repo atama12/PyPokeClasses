@@ -5,31 +5,28 @@ class GrowthRate(BaseModel):
         super().__init__("https://pokeapi.co/api/v2/growth-rate/" + str(id))
         
     @property
-    def id(self):
-        return int(self._json_data["id"])
+    def id(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"id",int)
     
     @property
-    def name(self):
-        return str(self._json_data["name"])
+    def name(self) -> Union[str,None]:
+        return Functions.convert_to_type(self._json_data,"name",str)
     
     @property
-    def formula(self):
-        return str(self._json_data["formula"])
+    def formula(self) -> Union[str,None]:
+        return Functions.convert_to_type(self._json_data,"formula",str)
     
     @property
-    def descriptions(self):
-        array : List[Description] = [Description(json_data) for json_data in self._json_data["descriptions"]]
-        return array
+    def descriptions(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"descriptions",Description)
     
     @property
-    def levels(self):
-        array : List[GrowthRateExperienceLevel] = [GrowthRateExperienceLevel(json_data) for json_data in self._json_data["levels"]]
-        return array
+    def levels(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"levels",GrowthRateExperienceLevel)
     
     @property
-    def pokemon_species(self):
-        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["pokemon_species"]]
-        return array
+    def pokemon_species(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"pokemon_species",NamedAPIResource)
     
     
 class GrowthRateExperienceLevel:
@@ -38,10 +35,10 @@ class GrowthRateExperienceLevel:
         
 
     @property
-    def level(self):
-        return int(self.__json_data["level"])
+    def level(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"level",int)
     
     @property
-    def experience(self):
-        return int(self.__json_data["experience"])
+    def experience(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"experience",int)
     

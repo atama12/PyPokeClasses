@@ -11,6 +11,7 @@ from .PokemonForms import PokemonForms
 from .PokemonHabitats import PokemonHabitats
 from .PokemonLocationAreas import PokemonLocationAreas
 from .PokemonShapes import PokemonShapes
+from .PokemonSpecies import PokemonSpecies
 from .Stats import Stats
 from .Types import Types
 
@@ -27,5 +28,6 @@ __all__ = ["Pokemon",
            "PokemonHabitats",
            "PokemonLocationAreas",
            "PokemonShapes",
+           "PokemonSpecies",
            "Stats",
            "Types"]

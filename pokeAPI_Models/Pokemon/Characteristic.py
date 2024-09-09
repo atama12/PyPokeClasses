@@ -5,23 +5,21 @@ class Characteristic(BaseModel):
         super().__init__("https://pokeapi.co/api/v2/characteristic/" + str(id))
         
     @property
-    def id(self):
-        return int(self._json_data["id"])
+    def id(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"id",int)
     
     @property
-    def gene_modulo(self):
-        return int(self._json_data["gene_modulo"])
+    def gene_modulo(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"gene_modulo",int)
 
     @property
-    def possible_values(self):  
-        array : List[int] = [int(json_data) for json_data in self._json_data["possible_values"]]
-        return array
+    def possible_values(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"possible_values",int)  
     
     @property
-    def highest_stat(self):
-        return NamedAPIResource(self._json_data["highest_stat"])
+    def highest_stat(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"highest_stat",NamedAPIResource)
     
     @property
-    def descriptions(self):  
-        array : List[Description] = [Description(json_data) for json_data in self._json_data["descriptions"]]
-        return array
+    def descriptions(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"descriptions",Description)  
