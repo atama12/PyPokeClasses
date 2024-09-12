@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from pokeAPI_Models.Berries import BerryFlavor
+from PyPokeClasses.Berries import BerryFlavor
 import json
 
 # 1. モックデータをファイルから読み込むためのfixture
@@ -33,7 +33,7 @@ def test_api_connect():
     ("names[0].name","\u304b\u3089\u3044"),
     
 ])
-@patch('pokeAPI_Models.Utility.Common.BaseModel.make_request')
+@patch('PyPokeClasses.Utility.Common.BaseModel.make_request')
 
 def test_data_check(mock_make_request, property_name, expected_value, mock_response_data):
     mock_make_request.return_value = (mock_response_data)

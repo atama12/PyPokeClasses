@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from pokeAPI_Models.Moves import MoveDamageClass
+from PyPokeClasses.Moves import MoveDamageClass
 import json
 
 # 1. モックデータをファイルから読み込むためのfixture
@@ -32,7 +32,7 @@ def test_api_connect():
     ("names[0].language.url","https://pokeapi.co/api/v2/language/1/"),
     ("names[0].name","\u3078\u3093\u304b"),
 ])
-@patch('pokeAPI_Models.Utility.Common.BaseModel.make_request')
+@patch('PyPokeClasses.Utility.Common.BaseModel.make_request')
 
 def test_data_check(mock_make_request, property_name, expected_value, mock_response_data):
     mock_make_request.return_value = (mock_response_data)

@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from pokeAPI_Models.Games import Pokedex
+from PyPokeClasses.Games import Pokedex
 import json
 
 # 1. モックデータをファイルから読み込むためのfixture
@@ -38,7 +38,7 @@ def test_api_connect():
     ("version_groups[0].name","aaa2"),
     ("version_groups[0].url","bbb2"),
 ])
-@patch('pokeAPI_Models.Utility.Common.BaseModel.make_request')
+@patch('PyPokeClasses.Utility.Common.BaseModel.make_request')
 
 def test_data_check(mock_make_request, property_name, expected_value, mock_response_data):
     mock_make_request.return_value = (mock_response_data)

@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from pokeAPI_Models.Pokemon import PokemonSpecies
+from PyPokeClasses.Pokemon import PokemonSpecies
 import json
 
 # 1. モックデータをファイルから読み込むためのfixture
@@ -70,7 +70,7 @@ def test_api_connect():
     ("varieties[0].pokemon.name","bulbasaur"),
     ("varieties[0].pokemon.url","https://pokeapi.co/api/v2/pokemon/1/"),
 ])
-@patch('pokeAPI_Models.Utility.Common.BaseModel.make_request')
+@patch('PyPokeClasses.Utility.Common.BaseModel.make_request')
 
 def test_data_check(mock_make_request, property_name, expected_value, mock_response_data):
     mock_make_request.return_value = (mock_response_data)

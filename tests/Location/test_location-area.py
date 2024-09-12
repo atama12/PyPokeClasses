@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from pokeAPI_Models.Locations import LocationArea
+from PyPokeClasses.Locations import LocationArea
 import json
 
 # 1. モックデータをファイルから読み込むためのfixture
@@ -47,7 +47,7 @@ def test_api_connect():
     ("pokemon_encounters[0].version_details[0].version.name","diamond"),
     ("pokemon_encounters[0].version_details[0].version.url","https://pokeapi.co/api/v2/version/12/"),
 ])
-@patch('pokeAPI_Models.Utility.Common.BaseModel.make_request')
+@patch('PyPokeClasses.Utility.Common.BaseModel.make_request')
 
 def test_data_check(mock_make_request, property_name, expected_value, mock_response_data):
     mock_make_request.return_value = (mock_response_data)

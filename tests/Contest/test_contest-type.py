@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from pokeAPI_Models.Contests import ContestType
+from PyPokeClasses.Contests import ContestType
 import json
 
 # 1. モックデータをファイルから読み込むためのfixture
@@ -31,7 +31,7 @@ def test_api_connect():
     ("names[0].name","\u304b\u3063\u3053\u3088\u3055"),
     
 ])
-@patch('pokeAPI_Models.Utility.Common.BaseModel.make_request')
+@patch('PyPokeClasses.Utility.Common.BaseModel.make_request')
 
 def test_data_check(mock_make_request, property_name, expected_value, mock_response_data):
     mock_make_request.return_value = (mock_response_data)

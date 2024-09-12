@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from pokeAPI_Models.Encounters import EncounterConditionValue
+from PyPokeClasses.Encounters import EncounterConditionValue
 import json
 
 # 1. モックデータをファイルから読み込むためのfixture
@@ -29,7 +29,7 @@ def test_api_connect():
     ("names[0].language.url","https://pokeapi.co/api/v2/language/6/"),
     ("names[0].name","W\u00e4hrend eines Schwarms"),
 ])
-@patch('pokeAPI_Models.Utility.Common.BaseModel.make_request')
+@patch('PyPokeClasses.Utility.Common.BaseModel.make_request')
 
 def test_data_check(mock_make_request, property_name, expected_value, mock_response_data):
     mock_make_request.return_value = (mock_response_data)

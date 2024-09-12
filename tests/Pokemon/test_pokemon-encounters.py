@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from pokeAPI_Models.Pokemon import PokemonLocationAreas
+from PyPokeClasses.Pokemon import PokemonLocationAreas
 import json
 
 # 1. モックデータをファイルから読み込むためのfixture
