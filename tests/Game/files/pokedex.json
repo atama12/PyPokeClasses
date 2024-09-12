@@ -7239,6 +7239,12 @@
             }
         }
     ],
-    "region": null,
-    "version_groups": []
+    "region": {
+        "name":"aaa",
+        "url":"bbb"
+    },
+    "version_groups": [{
+        "name":"aaa2",
+        "url":"bbb2"
+    }]
 }

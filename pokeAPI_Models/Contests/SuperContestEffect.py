@@ -6,19 +6,17 @@ class SuperContestEffect(BaseModel):
         super().__init__("https://pokeapi.co/api/v2/super-contest-effect/" + str(id))
         
     @property
-    def id(self):
-        return int(self._json_data["id"])
+    def id(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"id",int)
     
     @property
-    def appeal(self):
-        return int(self._json_data["appeal"])
+    def appeal(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"appeal",int)
     
     @property
-    def flavor_text_entries(self):
-        array : List[FlavorText] = [FlavorText(json_data) for json_data in self._json_data["flavor_text_entries"]]
-        return array
+    def flavor_text_entries(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"flavor_text_entries",FlavorText)
     
     @property
-    def moves(self):
-        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["moves"]]
-        return array
+    def moves(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"moves",NamedAPIResource)

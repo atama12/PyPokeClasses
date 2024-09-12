@@ -6,12 +6,12 @@ class ContestComboDetail:
         self.__json_data = json_data
         
     @property
-    def use_before(self) -> Union[NamedAPIResource,None]:
-        return Functions.convert_to_type(self.__json_data,"use_before",NamedAPIResource)
+    def use_before(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self.__json_data,"use_before",NamedAPIResource)
     
     @property
-    def use_after(self) -> Union[NamedAPIResource,None]:
-        return Functions.convert_to_type(self.__json_data,"use_after",NamedAPIResource)
+    def use_after(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self.__json_data,"use_after",NamedAPIResource)
     
 class ContestComboSets:
     def __init__(self,json_data):
@@ -32,7 +32,7 @@ class MoveFlavorText:
         
     @property
     def flavor_text(self) -> Union[str,None]:
-        return Functions.convert_to_type(self.__json_data,"flavor_text",int)
+        return Functions.convert_to_type(self.__json_data,"flavor_text",str)
     
     @property
     def language(self) -> Union[NamedAPIResource,None]:

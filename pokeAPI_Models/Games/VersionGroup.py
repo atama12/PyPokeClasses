@@ -6,39 +6,35 @@ class VersionGroup(BaseModel):
         super().__init__("https://pokeapi.co/api/v2/version-group/" + str(id))
         
     @property
-    def id(self):
-        return int(self._json_data["id"])
+    def id(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"id",int)
     
     @property
-    def name(self):
-        return str(self._json_data["name"])
+    def name(self) -> Union[str,None]:
+        return Functions.convert_to_type(self._json_data,"name",str)
     
     
     @property
-    def order(self):
-        return int(self._json_data["order"])
+    def order(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"order",int)
     
     @property
-    def generation(self):
-        return NamedAPIResource(self._json_data["generation"])
+    def generation(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"generation",NamedAPIResource)
     
     @property
-    def move_learn_method(self):
-        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["move_learn_method"]]
-        return array
+    def move_learn_methods(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"move_learn_methods",NamedAPIResource)
     
     @property
-    def pokedexes(self):
-        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["pokedexes"]]
-        return array
+    def pokedexes(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"pokedexes",NamedAPIResource)
 
     @property
-    def regions(self):
-        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["regions"]]
-        return array
+    def regions(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"regions",NamedAPIResource)
     
     @property
-    def versions(self):
-        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self._json_data["versions"]]
-        return array
+    def versions(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"versions",NamedAPIResource)
     

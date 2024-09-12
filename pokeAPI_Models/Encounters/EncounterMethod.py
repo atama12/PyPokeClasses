@@ -6,21 +6,20 @@ class EncounterMethod(BaseModel):
         super().__init__("https://pokeapi.co/api/v2/encounter-method/" + str(id))
         
     @property
-    def id(self):
-        return int(self._json_data["id"])
+    def id(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"id",int)
     
     @property
-    def name(self):
-        return str(self._json_data["name"])
+    def name(self) -> Union[str,None]:
+        return Functions.convert_to_type(self._json_data,"name",str)
     
     @property
-    def order(self):
-        return int(self._json_data["order"])
+    def order(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"order",int)
     
     @property
-    def names(self):
-        array : List[Name] = [Name(json_data) for json_data in self._json_data["names"]]
-        return array
+    def names(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"names",Name)
 
 
     

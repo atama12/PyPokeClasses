@@ -6,20 +6,19 @@ class Version(BaseModel):
         super().__init__("https://pokeapi.co/api/v2/version/" + str(id))
         
     @property
-    def id(self):
-        return int(self._json_data["id"])
+    def id(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"id",int)
     
     @property
-    def name(self):
-        return str(self._json_data["name"])
+    def name(self) -> Union[str,None]:
+        return Functions.convert_to_type(self._json_data,"name",str)
     
     @property
-    def names(self):
-        array : List[Name] = [Name(json_data) for json_data in self._json_data["names"]]
-        return array
+    def names(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"names",Name)
     
     @property
-    def version_group(self):
-        return NamedAPIResource(self._json_data["version_group"])
+    def version_group(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"version_group",NamedAPIResource)
     
     

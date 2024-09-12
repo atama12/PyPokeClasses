@@ -1,5 +1,8 @@
 {
-    "abilities": [],
+    "abilities": [{
+        "name":"aaa",
+        "url":"bbb"
+    }],
     "id": 1,
     "main_region": {
         "name": "kanto",

@@ -7,17 +7,17 @@ class Machine(BaseModel):
         
         
     @property
-    def id(self):
-        return int(self._json_data["id"])
+    def id(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"id",int)
     
     @property
-    def item(self):
-        return NamedAPIResource(self._json_data["item"])
+    def item(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"item",NamedAPIResource)
   
     @property
-    def move(self):
-        return NamedAPIResource(self._json_data["move"])
+    def move(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"move",NamedAPIResource)
     
     @property
-    def version_group(self):
-        return NamedAPIResource(self._json_data["version_group"])
+    def version_group(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"version_group",NamedAPIResource)

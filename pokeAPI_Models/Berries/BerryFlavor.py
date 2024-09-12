@@ -6,36 +6,34 @@ class BerryFlavor(BaseModel):
         super().__init__("https://pokeapi.co/api/v2/berry-flavor/" + str(id))
         
     @property
-    def id(self):
-        return int(self._json_data["id"])
+    def id(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"id",int)
     
     @property
-    def name(self):
-        return str(self._json_data["name"])
+    def name(self) -> Union[str,None]:
+        return Functions.convert_to_type(self._json_data,"name",str)
 
     @property
-    def berries(self):
-        array : List[FlavorBerryMap] = [FlavorBerryMap(json_data) for json_data in self._json_data["berries"]]
-        return array
+    def berries(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"berries",FlavorBerryMap)
     
     @property
-    def contest_type(self):
-        return NamedAPIResource(self._json_data["contest_type"])
+    def contest_type(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"contest_type",NamedAPIResource)
 
     @property
-    def names(self):
-        array : List[Name] = [Name(json_data) for json_data in self._json_data["names"]]
-        return array
+    def names(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"names",Name)
     
 class FlavorBerryMap:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def potency(self):
-        return int(self.__json_data["potency"])
+    def potency(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"potency",int)
     
     @property
-    def berry(self):
-        return NamedAPIResource(self.__json_data["berry"])
+    def berry(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"berry",NamedAPIResource)
     

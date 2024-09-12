@@ -2,7 +2,12 @@
     "accuracy": 100,
     "contest_combos": {
         "normal": {
-            "use_after": null,
+            "use_after": [
+                {
+                    "name": "aaa1",
+                    "url": "bbb1"
+                }
+            ],
             "use_before": [
                 {
                     "name": "double-slap",
@@ -19,8 +24,18 @@
             ]
         },
         "super": {
-            "use_after": null,
-            "use_before": null
+            "use_after": [
+                {
+                    "name": "aaa2",
+                    "url": "bbb2"
+                }
+            ],
+            "use_before": [
+                {
+                    "name": "aaa3",
+                    "url": "bbb3"
+                }
+            ]
         }
     },
     "contest_effect": {
@@ -34,8 +49,20 @@
         "name": "physical",
         "url": "https://pokeapi.co/api/v2/move-damage-class/2/"
     },
-    "effect_chance": null,
-    "effect_changes": [],
+    "effect_chance": 0,
+    "effect_changes": [{
+        "effect_entries":[{
+            "effect":"efe_aaa",
+            "language":{
+                "name":"la_aaaa",
+                "url":"la_bbbb"
+            }
+        }],
+        "version_group":{
+            "name":"vg_aaaa",
+            "url":"vg_bbbb"
+        }
+    }],
     "effect_entries": [
         {
             "effect": "Inflicts regular damage.",
@@ -1200,7 +1227,15 @@
             "url": "https://pokeapi.co/api/v2/pokemon/10257/"
         }
     ],
-    "machines": [],
+    "machines": [{
+        "machine":{
+            "url":"machine_aaa"
+        },
+        "version_group":{
+            "name":"vg_aaa",
+            "url":"vg_bbb"
+        }
+    }],
     "meta": {
         "ailment": {
             "name": "none",
@@ -1215,10 +1250,10 @@
         "drain": 0,
         "flinch_chance": 0,
         "healing": 0,
-        "max_hits": null,
-        "max_turns": null,
-        "min_hits": null,
-        "min_turns": null,
+        "max_hits": 0,
+        "max_turns": 0,
+        "min_hits": 0,
+        "min_turns": 0,
         "stat_chance": 0
     },
     "name": "pound",
@@ -1294,11 +1329,38 @@
             "name": "\u62cd\u51fb"
         }
     ],
-    "past_values": [],
+    "past_values": [{
+        "accuracy":1,
+        "effect_chance":0,
+        "power":1,
+        "pp":10,
+        "effect_entries":[{
+            "effect":"effe",
+            "short_effect":"short effe",
+            "language":{
+                "name":"la",
+                "url":"lala"
+            }
+        }],
+        "type":{
+            "name":"aaa",
+            "url":"bbb"
+        },
+        "version_group":{
+            "name":"aaa",
+            "url":"bbb"
+        }
+    }],
     "power": 40,
     "pp": 35,
     "priority": 0,
-    "stat_changes": [],
+    "stat_changes": [{
+        "change":100,
+        "stat":{
+            "name":"stat_aaa",
+            "url":"stat_bbb"
+        }
+    }],
     "super_contest_effect": {
         "url": "https://pokeapi.co/api/v2/super-contest-effect/5/"
     },

@@ -1,27 +1,100 @@
 {
-    "baby_trigger_item": null,
+    "baby_trigger_item": {
+        "name":"aaa",
+        "url":"bbb"
+    },
     "chain": {
-        "evolution_details": [],
+        "evolution_details": [{
+            "gender": 1,
+            "held_item": {
+                "name":"aaa2",
+                "url":"bbb2"
+            },
+            "item": {
+                "name":"aaa3",
+                "url":"bbb3"
+            },
+            "known_move": {
+                "name":"aaa4",
+                "url":"bbb4"
+            },
+            "known_move_type": {
+                "name":"aaa5",
+                "url":"bbb5"
+            },
+            "location": {
+                "name":"aaa6",
+                "url":"bbb6"
+            },
+            "min_affection": 1,
+            "min_beauty": 2,
+            "min_happiness": 2,
+            "min_level": 16,
+            "needs_overworld_rain": false,
+            "party_species": {
+                "name":"aaa7",
+                "url":"bbb7"
+            },
+            "party_type": {
+                "name":"aaa8",
+                "url":"bbb8"
+            },
+            "relative_physical_stats": 3,
+            "time_of_day": "ccc",
+            "trade_species": {
+                "name":"aaa9",
+                "url":"bbb9"
+            },
+            "trigger": {
+                "name": "level-up",
+                "url": "https://pokeapi.co/api/v2/evolution-trigger/1/"
+            },
+            "turn_upside_down": false
+        }],
         "evolves_to": [
             {
                 "evolution_details": [
                     {
-                        "gender": null,
-                        "held_item": null,
-                        "item": null,
-                        "known_move": null,
-                        "known_move_type": null,
-                        "location": null,
-                        "min_affection": null,
-                        "min_beauty": null,
-                        "min_happiness": null,
+                        "gender": 1,
+                        "held_item": {
+                            "name":"aaa2",
+                            "url":"bbb2"
+                        },
+                        "item": {
+                            "name":"aaa3",
+                            "url":"bbb3"
+                        },
+                        "known_move": {
+                            "name":"aaa4",
+                            "url":"bbb4"
+                        },
+                        "known_move_type": {
+                            "name":"aaa5",
+                            "url":"bbb5"
+                        },
+                        "location": {
+                            "name":"aaa6",
+                            "url":"bbb6"
+                        },
+                        "min_affection": 1,
+                        "min_beauty": 2,
+                        "min_happiness": 2,
                         "min_level": 16,
                         "needs_overworld_rain": false,
-                        "party_species": null,
-                        "party_type": null,
-                        "relative_physical_stats": null,
-                        "time_of_day": "",
-                        "trade_species": null,
+                        "party_species": {
+                            "name":"aaa7",
+                            "url":"bbb7"
+                        },
+                        "party_type": {
+                            "name":"aaa8",
+                            "url":"bbb8"
+                        },
+                        "relative_physical_stats": 3,
+                        "time_of_day": "ccc",
+                        "trade_species": {
+                            "name":"aaa9",
+                            "url":"bbb9"
+                        },
                         "trigger": {
                             "name": "level-up",
                             "url": "https://pokeapi.co/api/v2/evolution-trigger/1/"
@@ -33,22 +106,46 @@
                     {
                         "evolution_details": [
                             {
-                                "gender": null,
-                                "held_item": null,
-                                "item": null,
-                                "known_move": null,
-                                "known_move_type": null,
-                                "location": null,
-                                "min_affection": null,
-                                "min_beauty": null,
-                                "min_happiness": null,
+                                "gender": 1,
+                                "held_item": {
+                                    "name":"aaa2",
+                                    "url":"bbb2"
+                                },
+                                "item": {
+                                    "name":"aaa3",
+                                    "url":"bbb3"
+                                },
+                                "known_move": {
+                                    "name":"aaa4",
+                                    "url":"bbb4"
+                                },
+                                "known_move_type": {
+                                    "name":"aaa5",
+                                    "url":"bbb5"
+                                },
+                                "location": {
+                                    "name":"aaa6",
+                                    "url":"bbb6"
+                                },
+                                "min_affection": 1,
+                                "min_beauty": 2,
+                                "min_happiness": 2,
                                 "min_level": 32,
                                 "needs_overworld_rain": false,
-                                "party_species": null,
-                                "party_type": null,
-                                "relative_physical_stats": null,
-                                "time_of_day": "",
-                                "trade_species": null,
+                                "party_species": {
+                                    "name":"aaa7",
+                                    "url":"bbb7"
+                                },
+                                "party_type": {
+                                    "name":"aaa8",
+                                    "url":"bbb8"
+                                },
+                                "relative_physical_stats": 3,
+                                "time_of_day": "ccc",
+                                "trade_species": {
+                                    "name":"aaa9",
+                                    "url":"bbb9"
+                                },
                                 "trigger": {
                                     "name": "level-up",
                                     "url": "https://pokeapi.co/api/v2/evolution-trigger/1/"

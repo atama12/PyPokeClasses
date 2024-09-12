@@ -7,72 +7,67 @@ class LocationArea(BaseModel):
         
         
     @property
-    def id(self):
-        return int(self._json_data["id"])
+    def id(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"id",int)
     
     @property
-    def name(self):
-        return str(self._json_data["name"])
+    def name(self) -> Union[str,None]:
+        return Functions.convert_to_type(self._json_data,"name",str)
     
     @property
-    def game_index(self):
-        return int(self._json_data["game_index"])
+    def game_index(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"game_index",int)
     
     @property
-    def encounter_method_rates(self):
-        array : List[EncounterMethodRate] = [EncounterMethodRate(json_data) for json_data in self._json_data["encounter_method_rates"]]
-        return array
+    def encounter_method_rates(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"encounter_method_rates",EncounterMethodRate)
 
     @property
-    def location(self):
-        return NamedAPIResource(self._json_data["location"])
+    def location(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"location",NamedAPIResource)
     
     
     @property
-    def names(self):
-        array : List[Name] = [Name(json_data) for json_data in self._json_data["names"]]
-        return array
+    def names(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"names",Name)
     
     @property
-    def pokemon_encounters(self):
-        array : List[PokemonEncounter] = [PokemonEncounter(json_data) for json_data in self._json_data["pokemon_encounters"]]
-        return array
+    def pokemon_encounters(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"pokemon_encounters",PokemonEncounter)
 
 class EncounterMethodRate:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def encounter_method(self):
-        return NamedAPIResource(self.__json_data["encounter_method"])
+    def encounter_method(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"encounter_method",NamedAPIResource)
     
     @property
-    def version_details(self):
-        array : List[EncounterVersionDetails] = [EncounterVersionDetails(json_data) for json_data in self.__json_data["version_details"]]
-        return array
+    def version_details(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self.__json_data,"version_details",EncounterVersionDetails)
     
 class EncounterVersionDetails:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def rate(self):
-        return int(self.__json_data["rate"])
+    def rate(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"rate",int)
     
     @property
-    def version(self):
-        return NamedAPIResource(self.__json_data["version"])
+    def version(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"version",NamedAPIResource)
     
 class PokemonEncounter:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def pokemon(self):
-        return NamedAPIResource(self.__json_data["pokemon"])
+    def pokemon(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"pokemon",NamedAPIResource)
     
     @property
-    def version_details(self):
-        array : List[VersionEncounterDetail] = [VersionEncounterDetail(json_data) for json_data in self.__json_data["version_details"]]
-        return array
+    def version_details(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self.__json_data,"version_details",VersionEncounterDetail)
     

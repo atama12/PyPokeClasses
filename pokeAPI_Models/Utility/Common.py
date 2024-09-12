@@ -1,5 +1,5 @@
 import requests_cache
-from typing import List,Any,Type,Union
+from typing import List,Type,Union
 # requests_cache を有効化
 import requests
 
@@ -14,12 +14,11 @@ class Functions:
         if key in json_data and json_data.get(key) is not None:
             array : List[target_type] = [target_type(js) for js in json_data.get(key)]
             return array
-            #return target_type(json_data.get(key))
         else:
             return None
 class BaseModel:
     def __init__(self,url):
-        self.session = requests_cache.CachedSession('pokemon')
+        self.session = requests_cache.CachedSession('pokemon',expire_after=86400)
         self._json_data : dict | None = self.make_request(url)
         
     def make_request(self,url):
@@ -43,68 +42,83 @@ class APIResource:
         self.__json_data = json_data
         
     @property
-    def url(self):
-        return str(self.__json_data["url"])
+    def url(self) -> Union[str,None]:
+        return Functions.convert_to_type(self.__json_data,"url",str)
+    
+class NamedAPIResource:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def name(self) -> Union[str,None]:
+        return Functions.convert_to_type(self.__json_data,"name",str)
+    
+    @property
+    def url(self) -> Union[str,None]:
+        return Functions.convert_to_type(self.__json_data,"url",str)
     
 class Description:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def description(self):
-        return str(self.__json_data["description"])
+    def description(self) -> Union[str,None]:
+        return Functions.convert_to_type(self.__json_data,"description",str)
     @property
-    def language(self):
-        return NamedAPIResource(self.__json_data["language"])
+    def language(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"language",NamedAPIResource)
 
 class Effect:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def effect(self):
-        return str(self.__json_data["effect"])
+    def effect(self) -> Union[str,None]:
+        return Functions.convert_to_type(self.__json_data,"effect",str)
+    
     @property
-    def language(self):
-        return NamedAPIResource(self.__json_data["language"])
+    def language(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"language",NamedAPIResource)
     
 class Encounter:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def min_level(self):
-        return int(self.__json_data["min_level"])
+    def min_level(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"min_level",int)
     
     @property
-    def max_level(self):
-        return int(self.__json_data["max_level"])
+    def max_level(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"max_level",int)
     
     @property
-    def condition_values(self):
-        array : List[NamedAPIResource] = [NamedAPIResource(json_data) for json_data in self.__json_data["condition_values"]]
-        return array
+    def condition_values(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self.__json_data,"condition_values",NamedAPIResource)
     
     @property
-    def chance(self):
-        return int(self.__json_data["chance"])
+    def chance(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"chance",int)
     
     @property
-    def method(self):
-        return NamedAPIResource(self.__json_data["method"])
+    def method(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"method",NamedAPIResource)
     
 class FlavorText:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def flavor_text(self):
-        return str(self.__json_data["flavor_text"])
+    def flavor_text(self) -> Union[str,None]:
+        return Functions.convert_to_type(self.__json_data,"flavor_text",str)
+    
     @property
-    def language(self):
-        return NamedAPIResource(self.__json_data["language"])
+    def language(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"language",NamedAPIResource)
+    
     @property
-    def version(self):
+    def version(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"version",NamedAPIResource)
         return NamedAPIResource(self.__json_data["version"])
    
    
@@ -113,22 +127,24 @@ class GenerationGameIndex:
         self.__json_data = json_data
         
     @property
-    def game_index(self):
-        return int(self.__json_data["game_index"])
+    def game_index(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"game_index",int)
+    
     @property
-    def generation(self):
-        return NamedAPIResource(self.__json_data["generation"])
+    def generation(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"generation",NamedAPIResource)
 
 class MachineVersionDetail:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def machine(self):
-        return APIResource(self.__json_data["machine"])
+    def machine(self) -> Union[APIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"machine",APIResource)
+    
     @property
-    def version_group(self):
-        return NamedAPIResource(self.__json_data["version_group"])
+    def version_group(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"version_group",NamedAPIResource)
     
  
 class Name:
@@ -136,52 +152,42 @@ class Name:
         self.__json_data = json_data
         
     @property
-    def name(self):
-        return str(self.__json_data["name"])
-    @property
-    def language(self):
-        return NamedAPIResource(self.__json_data["language"])
-
-class NamedAPIResource:
-    def __init__(self,json_data):
-        self.__json_data = json_data
-        
-    @property
     def name(self) -> Union[str,None]:
-        return str(self.__json_data["name"])
-        #return self.convert_to_type(self.__json_data,"name",str)
+        return Functions.convert_to_type(self.__json_data,"name",str)
     
     @property
-    def url(self):
-        return str(self.__json_data["url"])
+    def language(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"language",NamedAPIResource)
+
+
     
 class VerboseEffect:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def effect(self):
-        return str(self.__json_data["effect"])
+    def effect(self) -> Union[str,None]:
+        return Functions.convert_to_type(self.__json_data,"effect",str)
     
     @property
-    def short_effect(self):
-        return str(self.__json_data["short_effect"])
+    def short_effect(self) -> Union[str,None]:
+        return Functions.convert_to_type(self.__json_data,"short_effect",str)
     
     @property
-    def language(self):
-        return NamedAPIResource(self.__json_data["language"])
+    def language(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"language",NamedAPIResource)
     
 class VersionGameIndex:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def game_index(self):
-        return int(self.__json_data["game_index"])
+    def game_index(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"game_index",int)
     
     @property
-    def version(self):
-        return NamedAPIResource(self.__json_data["version"])
+    def version(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"version",NamedAPIResource)
     
 class VersionEncounterDetail:
     def __init__(self,json_data):
@@ -189,17 +195,16 @@ class VersionEncounterDetail:
 
     
     @property
-    def version(self):
-        return NamedAPIResource(self.__json_data["version"])
+    def version(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"version",NamedAPIResource)
     
     @property
-    def max_chance(self):
-        return int(self.__json_data["max_chance"])
+    def max_chance(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"max_chance",int)
     
     @property
-    def encounter_details(self):
-        array : List[Encounter] = [Encounter(json_data) for json_data in self.__json_data["encounter_details"]]
-        return array
+    def encounter_details(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self.__json_data,"encounter_details",Encounter)
     
 class VersionGroupFlavorText:
     def __init__(self,json_data):
@@ -207,13 +212,13 @@ class VersionGroupFlavorText:
 
     
     @property
-    def text(self):
-        return str(self.__json_data["text"])
+    def text(self) -> Union[str,None]:
+        return Functions.convert_to_type(self.__json_data,"text",str)
     
     @property
-    def language(self):
-        return NamedAPIResource(self.__json_data["language"])
+    def language(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"language",NamedAPIResource)
     
     @property
-    def version_group(self):
-        return NamedAPIResource(self.__json_data["version_group"])
+    def version_group(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"version_group",NamedAPIResource)

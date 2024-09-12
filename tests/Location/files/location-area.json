@@ -151,7 +151,10 @@
                     "encounter_details": [
                         {
                             "chance": 60,
-                            "condition_values": [],
+                            "condition_values": [{
+                                "name":"aaa",
+                                "url":"bbb"
+                            }],
                             "max_level": 30,
                             "method": {
                                 "name": "surf",

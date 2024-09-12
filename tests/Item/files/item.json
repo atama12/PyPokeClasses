@@ -17,7 +17,7 @@
             "url": "https://pokeapi.co/api/v2/item-attribute/5/"
         }
     ],
-    "baby_trigger_for": null,
+    "baby_trigger_for": {"url":"aaa"},
     "category": {
         "name": "standard-balls",
         "url": "https://pokeapi.co/api/v2/item-category/34/"
@@ -662,8 +662,11 @@
             }
         }
     ],
-    "fling_effect": null,
-    "fling_power": null,
+    "fling_effect": {
+        "name":"aaa1",
+        "url":"bbb1"
+    },
+    "fling_power": 1,
     "game_indices": [
         {
             "game_index": 1,
@@ -708,9 +711,31 @@
             }
         }
     ],
-    "held_by_pokemon": [],
+    "held_by_pokemon": [{
+        "pokemon":{
+            "name":"poke_aaa",
+            "url":"poke_bbb"
+        },
+        "version_details":[{
+            "rarity":1,
+            "version":{
+                "name":"vd_aaa",
+                "url":"vd_bbb"
+            }
+        }
+
+        ]
+    }],
     "id": 1,
-    "machines": [],
+    "machines": [{
+        "machine":{
+            "url":"ma_aaa"
+        },
+        "version_group":{
+            "name":"vg_aaa",
+            "url":"vg_bbb"
+        }
+    }],
     "name": "master-ball",
     "names": [
         {

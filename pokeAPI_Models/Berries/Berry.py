@@ -10,63 +10,62 @@ class Berry(BaseModel):
         super().__init__("https://pokeapi.co/api/v2/berry/" + str(id))
         
     @property
-    def id(self):
-        return int(self._json_data["id"])
+    def id(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"id",int)
     
     @property
-    def name(self):
-        return str(self._json_data["name"])
+    def name(self) -> Union[str,None]:
+        return Functions.convert_to_type(self._json_data,"name",str)
     
     @property
-    def growth_time(self):
-        return int(self._json_data["growth_time"])
+    def growth_time(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"growth_time",int)
     
     @property
-    def max_harvest(self):
-        return int(self._json_data["max_harvest"])
+    def max_harvest(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"max_harvest",int)
     
     @property
-    def natural_gift_power(self):
-        return int(self._json_data["natural_gift_power"])
+    def natural_gift_power(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"natural_gift_power",int)
     
     @property
-    def size(self):
-        return int(self._json_data["size"])
+    def size(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"size",int)
     
     @property
-    def smoothness(self):
-        return int(self._json_data["smoothness"])
+    def smoothness(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"smoothness",int)
     
     @property
-    def soil_dryness(self):
-        return int(self._json_data["soil_dryness"])
+    def soil_dryness(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"soil_dryness",int)
     
     @property
-    def firmness(self):
-        return NamedAPIResource(self._json_data["firmness"])
+    def firmness(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"firmness",NamedAPIResource)
     
     @property
-    def flavors(self):
-        array : List[BerryFlavorMap] = [BerryFlavorMap(json_data) for json_data in self._json_data["flavors"]]
-        return array
+    def flavors(self) -> Union[List,None]:
+        return Functions.convert_to_type_list(self._json_data,"flavors",BerryFlavorMap)
     
     @property
-    def item(self):
-        return NamedAPIResource(self._json_data["item"])
+    def item(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"item",NamedAPIResource)
     
     @property
-    def natural_gift_type(self):
-        return NamedAPIResource(self._json_data["natural_gift_type"])
+    def natural_gift_type(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"natural_gift_type",NamedAPIResource)
     
 class BerryFlavorMap:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def potency(self):
-        return int(self.__json_data["potency"])
+    def potency(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"potency",int)
     
     @property
-    def flavor(self):
-        return NamedAPIResource(self.__json_data["flavor"])
+    def flavor(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"flavor",NamedAPIResource)
     
