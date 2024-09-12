@@ -6,7 +6,7 @@
 
 </p>
 
-<p style="font-size : 20px">
+<p style="font-size : 16px">
   PyPokeClasses is a Python package that provides a class-based structure for accessing and interacting with PokeAPI's JSON data. It simplifies the process of making API requests and handling the returned data, allowing developers to focus on building applications with Pokémon-related data.
 </p>
 
@@ -28,77 +28,52 @@
   </li>
 </ul>
 
-## プロジェクト名
+## Installation
 
-React Hooks
+You can install this package using pip:
 
-## プロジェクトについて
+```python
+pip install PyPokeClasses
+```
 
-React Hooksについて勉強
+## Usage
 
-◆使用するHooks一覧
+Here is an example of how to use PyPokeClasses to fetch and interact with Pokémon data:
 
-| Hooks        | 概要                                                                      | 備考 |
+```
+from PyPokeClasses.Pokemon import Pokemon
+
+# Initialize a Pokemon instance by name or ID
+pikachu = Pokemon('pikachu')
+
+# Access basic information
+print(f"Name: {pikachu.name}")
+print(f"Height: {pikachu.height}")
+print(f"Weight: {pikachu.weight}")
+
+# Access additional data
+print(f"Base Experience: {pikachu.base_experience}")
+print(f"Types: {[t.type.name for t in pikachu.types]}")
+```
+
+<h2> Supported Entities</h2>
+
+| Entities        | Classes                                                                      | Links |
 | -------------| ----------                                                                | --------|
-| useState     | 関数コンポーネントでstate管理（保持と更新）する、最も利用される                | [リンク](https://ja.react.dev/reference/react/useState)
-| useEffect    | コンポーネントを外部システムと同期させる                                     | [リンク](https://ja.react.dev/reference/react/useEffect)
-| useContext   | コンポーネントツリーの様々な階層からContextに収容されたデータへアクセスする     | [リンク](https://ja.react.dev/reference/react/useContext)
-| useRef       | レンダリング不要な値の参照                                                  | [リンク](https://ja.react.dev/reference/react/useRef)
-| useCallback  | 関数定義をキャッシュし再レンダリングをスキップする                           | [リンク](https://ja.react.dev/reference/react/useCallback)
-| useMemo      | 計算結果をキャッシュし再レンダリングをスキップする                            | [リンク](https://ja.react.dev/reference/react/useMemo)
-| useSound     | コンポーネント内でオーディオの制御を行う(別途use-soundのインストール要)        | [リンク](https://www.npmjs.com/package/use-sound)
+| Berries     |   Berry / BerryFirmness / BerryFlavor   | [Link](https://pokeapi.co/docs/v2#berries-section)
+| Contests    | ContestType / ContestEffect / SuperContestEffect | [Link](https://pokeapi.co/docs/v2#contests-section)
+| Encounters   | EncounterMethod / EncounterCondition / EncounterConditionValue | [Link](https://pokeapi.co/docs/v2#encounters-section)
+| Evolution       | EvolutionChain / EvolutionTrigger | [Link](https://pokeapi.co/docs/v2#evolution-section)
+| Games  | Generation / Pokedex / Version / VersionGroup | [Link](https://pokeapi.co/docs/v2#games-section)
+| Items      | Item / ItemAttribute / ItemCategory / ItemFlingEffect / ItemPocket | [Link](https://pokeapi.co/docs/v2#items-section)
+| Locations     | Location / LocationArea / PalParkArea / Region | [Link](https://pokeapi.co/docs/v2#locations-section)
+| Machines     | Machine | [Link](https://pokeapi.co/docs/v2#machines-section)
+| Moves     | MoveAilments / MoveBattleStyles / MoveCategory /MoveDamageClass / MoveLearnMethod / Moves / MoveTarget | [Link](https://pokeapi.co/docs/v2#moves-section)
+| Pokemon     | Abilities / Characteristic / EggGroup / Genders / GrowthRate / Natures / PokeathlonStats / Pokemon / PokemonColors / PokemonForms / PokemonHabitats / PokemonShapes / PokemonSpecies / Stats / Types | [Link](https://pokeapi.co/docs/v2#locations-section)
 
-<p align="right">(<a href="#top">トップへ</a>)</p>
+## APIRefference
 
-## 環境
+Each class within the package is mapped to the corresponding PokeAPI endpoint. Refer to the official <a href="https://pokeapi.co/">PokeAPI documentation</a> for details about the available data.
 
-<!-- 言語、フレームワーク、ミドルウェア、インフラの一覧とバージョンを記載 -->
-
-| 言語・フレームワーク  | バージョン |
-| --------------------- | ---------- |
-| Node.js               | 20.12.1    |
-| React                 | 18.3.1     |
-| @chakra-ui/react      | 2.8.2      |
-| @chakra-ui/icons      | 2.1.1      |
-
-その他のパッケージのバージョンは package.json を参照してください
-
-<p align="right">(<a href="#top">トップへ</a>)</p>
-
-## ディレクトリ構成
-
-<!-- Treeコマンドを使ってディレクトリ構成を記載 -->
-
-<p align="right">(<a href="#top">トップへ</a>)</p>
-
-## 開発環境構築
-
-<!-- コンテナの作成方法、パッケージのインストール方法など、開発環境構築に必要な情報を記載 -->
-
-### node_moduleインストール
-
-```bash
-npm install
-```
-
-### サービス起動(Run Development)
-
-```bash
-npm start
-```
-
-### 動作確認
-
-<http://localhost:3000> にアクセスできるか確認
-
-アクセスできたら成功
-
-## トラブルシューティング
-
-### Missing script: "dev"
-
-カレントディレクトリが正しくない可能性があります。
-
-正しい位置に移動してください。（study/src）
-
-<p align="right">(<a href="#top">トップへ</a>)</p>
+## LICENSE
+This project is licensed under the MIT License - see the LICENSE file for details.
