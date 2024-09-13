@@ -1,3 +1,4 @@
+
 <div id="top"></div>
 
 # PyPokeClasses
@@ -55,6 +56,10 @@ print(f"Weight: {pikachu.weight}")
 print(f"Base Experience: {pikachu.base_experience}")
 print(f"Types: {[t.type.name for t in pikachu.types]}")
 ```
+
+Thanks to this design, the class dynamically fetches and stores the data in object properties, allowing users to easily access and interact with PokeAPI data directly from the class instance. Moreover, code completion (autocomplete) for these properties is supported, which enhances the development experience by suggesting available Pokémon attributes and methods during coding.
+
+![ダウンロード](https://github.com/user-attachments/assets/6968777b-1f4a-47c6-92f8-a29165f21fad)
 
 <h2> Supported Entities</h2>
 
