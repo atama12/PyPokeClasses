@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 .vscode/
 pokemon.sqlite
+.pypirc
 # C extensions
 *.so
 
