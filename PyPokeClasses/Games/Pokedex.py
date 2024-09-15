@@ -1,6 +1,17 @@
 from ..Utility.Common import *
-from typing import List
-
+    
+class PokemonEntry:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def entry_number(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"entry_number",int)
+    
+    @property
+    def pokemon_species(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"pokemon_species",NamedAPIResource)
+    
 class Pokedex(BaseModel):
     def __init__(self,id):
         super().__init__("https://pokeapi.co/api/v2/pokedex/" + str(id))
@@ -18,15 +29,15 @@ class Pokedex(BaseModel):
         return Functions.convert_to_type(self._json_data,"is_main_series",bool)
     
     @property
-    def descriptions(self) -> Union[List,None]:
+    def descriptions(self) -> Union[list[Description],None]:
         return Functions.convert_to_type_list(self._json_data,"descriptions",Description)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)
     
     @property
-    def pokemon_entries(self) -> Union[List,None]:
+    def pokemon_entries(self) -> Union[list[PokemonEntry],None]:
         return Functions.convert_to_type_list(self._json_data,"pokemon_entries",PokemonEntry)
     
     @property
@@ -34,20 +45,5 @@ class Pokedex(BaseModel):
         return Functions.convert_to_type(self._json_data,"region",NamedAPIResource)
     
     @property
-    def version_groups(self) -> Union[List,None]:
+    def version_groups(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"version_groups",NamedAPIResource)
-    
-    
-    
-class PokemonEntry:
-    def __init__(self,json_data):
-        self.__json_data = json_data
-        
-    @property
-    def entry_number(self) -> Union[int,None]:
-        return Functions.convert_to_type(self.__json_data,"entry_number",int)
-    
-    @property
-    def pokemon_species(self) -> Union[NamedAPIResource,None]:
-        return Functions.convert_to_type(self.__json_data,"pokemon_species",NamedAPIResource)
-    

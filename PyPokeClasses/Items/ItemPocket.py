@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from typing import List
 
 class ItemPocket(BaseModel):
     def __init__(self,id):
@@ -14,11 +13,11 @@ class ItemPocket(BaseModel):
         return Functions.convert_to_type(self._json_data,"name",str)
     
     @property
-    def categories(self) -> Union[List,None]:
+    def categories(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"categories",NamedAPIResource)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)
     
     

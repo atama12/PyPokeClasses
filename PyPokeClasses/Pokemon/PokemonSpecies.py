@@ -1,6 +1,55 @@
 from ..Utility.Common import *
-from typing import List
+    
+class Genus:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def genus(self) -> Union[str,None]:
+        return Functions.convert_to_type(self.__json_data,"genus",str)
+    
+    @property
+    def language(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"language",NamedAPIResource)
+    
+class PokemonSpeciesDexEntry:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def entry_number(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"entry_number",int)
+    
+    @property
+    def pokedex(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"pokedex",NamedAPIResource)
+    
+class PalParkEncounterArea:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def base_score(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"base_score",int)
+    @property
+    def rate(self) -> Union[int,None]:
+        return Functions.convert_to_type(self.__json_data,"rate",int)
+    @property
+    def area(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"area",NamedAPIResource)
+    
+class PokemonSpeciesVariety:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def is_default(self) -> Union[bool,None]:
+        return Functions.convert_to_type(self.__json_data,"is_default",bool)
 
+    @property
+    def pokemon(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"pokemon",NamedAPIResource)
+    
 class PokemonSpecies(BaseModel):
     def __init__(self,id):
         super().__init__("https://pokeapi.co/api/v2/pokemon-species/" + str(id))
@@ -58,11 +107,11 @@ class PokemonSpecies(BaseModel):
         return Functions.convert_to_type(self._json_data,"growth_rate",NamedAPIResource)
     
     @property
-    def pokedex_numbers(self) -> Union[List,None]:
+    def pokedex_numbers(self) -> Union[list[PokemonSpeciesDexEntry],None]:
         return Functions.convert_to_type_list(self._json_data,"pokedex_numbers",PokemonSpeciesDexEntry)
     
     @property
-    def egg_groups(self) -> Union[List,None]:
+    def egg_groups(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"egg_groups",NamedAPIResource)
     
     @property
@@ -90,76 +139,25 @@ class PokemonSpecies(BaseModel):
         return Functions.convert_to_type(self._json_data,"generation",NamedAPIResource)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)
     
     @property
-    def pal_park_encounters(self) -> Union[List,None]:
+    def pal_park_encounters(self) -> Union[list[PalParkEncounterArea],None]:
         return Functions.convert_to_type_list(self._json_data,"pal_park_encounters",PalParkEncounterArea)
     
     @property
-    def flavor_text_entries(self) -> Union[List,None]:
+    def flavor_text_entries(self) -> Union[list[FlavorText],None]:
         return Functions.convert_to_type_list(self._json_data,"flavor_text_entries",FlavorText)
     
     @property
-    def form_descriptions(self) -> Union[List,None]:
+    def form_descriptions(self) -> Union[list[Description],None]:
         return Functions.convert_to_type_list(self._json_data,"form_descriptions",Description)
     
     @property
-    def genera(self) -> Union[List,None]:
+    def genera(self) -> Union[list[Genus],None]:
         return Functions.convert_to_type_list(self._json_data,"genera",Genus)
     
     @property
-    def varieties(self) -> Union[List,None]:
+    def varieties(self) -> Union[list[PokemonSpeciesVariety],None]:
         return Functions.convert_to_type_list(self._json_data,"varieties",PokemonSpeciesVariety)
-    
-    
-class Genus:
-    def __init__(self,json_data):
-        self.__json_data = json_data
-        
-    @property
-    def genus(self) -> Union[str,None]:
-        return Functions.convert_to_type(self.__json_data,"genus",str)
-    
-    @property
-    def language(self) -> Union[NamedAPIResource,None]:
-        return Functions.convert_to_type(self.__json_data,"language",NamedAPIResource)
-    
-class PokemonSpeciesDexEntry:
-    def __init__(self,json_data):
-        self.__json_data = json_data
-        
-    @property
-    def entry_number(self) -> Union[int,None]:
-        return Functions.convert_to_type(self.__json_data,"entry_number",int)
-    
-    @property
-    def pokedex(self) -> Union[NamedAPIResource,None]:
-        return Functions.convert_to_type(self.__json_data,"pokedex",NamedAPIResource)
-    
-class PalParkEncounterArea:
-    def __init__(self,json_data):
-        self.__json_data = json_data
-        
-    @property
-    def base_score(self) -> Union[int,None]:
-        return Functions.convert_to_type(self.__json_data,"base_score",int)
-    @property
-    def rate(self) -> Union[int,None]:
-        return Functions.convert_to_type(self.__json_data,"rate",int)
-    @property
-    def area(self) -> Union[NamedAPIResource,None]:
-        return Functions.convert_to_type(self.__json_data,"area",NamedAPIResource)
-    
-class PokemonSpeciesVariety:
-    def __init__(self,json_data):
-        self.__json_data = json_data
-        
-    @property
-    def is_default(self) -> Union[bool,None]:
-        return Functions.convert_to_type(self.__json_data,"is_default",bool)
-
-    @property
-    def pokemon(self) -> Union[NamedAPIResource,None]:
-        return Functions.convert_to_type(self.__json_data,"pokemon",NamedAPIResource)

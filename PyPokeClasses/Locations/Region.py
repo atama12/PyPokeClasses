@@ -11,7 +11,7 @@ class Region(BaseModel):
         return Functions.convert_to_type(self._json_data,"id",int)
     
     @property
-    def locations(self) -> Union[List,None]:
+    def locations(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"locations",NamedAPIResource)
     
     @property
@@ -19,7 +19,7 @@ class Region(BaseModel):
         return Functions.convert_to_type(self._json_data,"name",str)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)
 
     @property
@@ -27,10 +27,10 @@ class Region(BaseModel):
         return Functions.convert_to_type(self._json_data,"main_generation",NamedAPIResource)
 
     @property
-    def pokedexes(self) -> Union[List,None]:
+    def pokedexes(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"pokedexes",NamedAPIResource)
     
     @property
-    def version_groups(self) -> Union[List,None]:
+    def version_groups(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"version_groups",NamedAPIResource)
     

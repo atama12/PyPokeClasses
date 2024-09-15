@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from typing import List
 
 class VersionGroup(BaseModel):
     def __init__(self,id):
@@ -23,18 +22,18 @@ class VersionGroup(BaseModel):
         return Functions.convert_to_type(self._json_data,"generation",NamedAPIResource)
     
     @property
-    def move_learn_methods(self) -> Union[List,None]:
+    def move_learn_methods(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"move_learn_methods",NamedAPIResource)
     
     @property
-    def pokedexes(self) -> Union[List,None]:
+    def pokedexes(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"pokedexes",NamedAPIResource)
 
     @property
-    def regions(self) -> Union[List,None]:
+    def regions(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"regions",NamedAPIResource)
     
     @property
-    def versions(self) -> Union[List,None]:
+    def versions(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"versions",NamedAPIResource)
     

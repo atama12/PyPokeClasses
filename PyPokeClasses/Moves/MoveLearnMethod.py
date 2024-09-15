@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from typing import List
 
 class MoveLearnMethod(BaseModel):
     def __init__(self,id):
@@ -15,13 +14,13 @@ class MoveLearnMethod(BaseModel):
         return Functions.convert_to_type(self._json_data,"name",str)
     
     @property
-    def descriptions(self) -> Union[List,None]:
+    def descriptions(self) -> Union[list[Description],None]:
         return Functions.convert_to_type_list(self._json_data,"descriptions",Description)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)
     
     @property
-    def version_groups(self) -> Union[List,None]:
+    def version_groups(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"version_groups",NamedAPIResource)

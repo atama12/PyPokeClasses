@@ -1,5 +1,6 @@
 import requests_cache
-from typing import List,Type,Union
+from typing import Type,Union
+
 # requests_cache を有効化
 import requests
 
@@ -12,7 +13,7 @@ class Functions:
         
     def convert_to_type_list(json_data:dict,key: str,target_type: Type):
         if key in json_data and json_data.get(key) is not None:
-            array : List[target_type] = [target_type(js) for js in json_data.get(key)]
+            array : list[target_type] = [target_type(js) for js in json_data.get(key)]
             return array
         else:
             return None
@@ -93,7 +94,7 @@ class Encounter:
         return Functions.convert_to_type(self.__json_data,"max_level",int)
     
     @property
-    def condition_values(self) -> Union[List,None]:
+    def condition_values(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self.__json_data,"condition_values",NamedAPIResource)
     
     @property
@@ -119,7 +120,6 @@ class FlavorText:
     @property
     def version(self) -> Union[NamedAPIResource,None]:
         return Functions.convert_to_type(self.__json_data,"version",NamedAPIResource)
-        return NamedAPIResource(self.__json_data["version"])
    
    
 class GenerationGameIndex:
@@ -203,7 +203,7 @@ class VersionEncounterDetail:
         return Functions.convert_to_type(self.__json_data,"max_chance",int)
     
     @property
-    def encounter_details(self) -> Union[List,None]:
+    def encounter_details(self) -> Union[list[Encounter],None]:
         return Functions.convert_to_type_list(self.__json_data,"encounter_details",Encounter)
     
 class VersionGroupFlavorText:

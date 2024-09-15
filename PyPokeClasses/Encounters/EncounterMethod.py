@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from typing import List
 
 class EncounterMethod(BaseModel):
     def __init__(self,id):
@@ -18,7 +17,7 @@ class EncounterMethod(BaseModel):
         return Functions.convert_to_type(self._json_data,"order",int)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)
 
 

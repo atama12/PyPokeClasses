@@ -1,25 +1,21 @@
+from __future__ import annotations
 from ..Utility.Common import *
-from typing import List
 
-class ChainLink:
-    def __init__(self,json_data):
-        self.__json_data = json_data
+class EvolutionChain(BaseModel):
+    def __init__(self,id):
+        super().__init__("https://pokeapi.co/api/v2/evolution-chain/" + str(id))
         
     @property
-    def is_baby(self) -> Union[bool,None]:
-        return Functions.convert_to_type(self.__json_data,"is_baby",bool)
+    def id(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"id",int)
     
     @property
-    def species(self) -> Union[NamedAPIResource,None]:
-        return Functions.convert_to_type(self.__json_data,"species",NamedAPIResource)
+    def baby_trigger_item(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"baby_trigger_item",NamedAPIResource)
     
     @property
-    def evolution_details(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self.__json_data,"evolution_details",EvolutionDetail)
-    
-    @property
-    def evolves_to(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self.__json_data,"evolves_to",ChainLink)
+    def chain(self) -> Union[ChainLink,None]:
+        return Functions.convert_to_type(self._json_data,"chain",ChainLink)
     
 class EvolutionDetail:
     def __init__(self,json_data):
@@ -96,19 +92,26 @@ class EvolutionDetail:
     @property
     def turn_upside_down(self) -> Union[bool,None]:
         return Functions.convert_to_type(self.__json_data,"turn_upside_down",bool)
-   
-class EvolutionChain(BaseModel):
-    def __init__(self,id):
-        super().__init__("https://pokeapi.co/api/v2/evolution-chain/" + str(id))
+    
+class ChainLink:
+    def __init__(self,json_data):
+        self.__json_data = json_data
         
     @property
-    def id(self) -> Union[int,None]:
-        return Functions.convert_to_type(self._json_data,"id",int)
+    def is_baby(self) -> Union[bool,None]:
+        return Functions.convert_to_type(self.__json_data,"is_baby",bool)
     
     @property
-    def baby_trigger_item(self) -> Union[NamedAPIResource,None]:
-        return Functions.convert_to_type(self._json_data,"baby_trigger_item",NamedAPIResource)
+    def species(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"species",NamedAPIResource)
     
     @property
-    def chain(self) -> Union[ChainLink,None]:
-        return Functions.convert_to_type(self._json_data,"chain",ChainLink)
+    def evolution_details(self) -> Union[list[EvolutionDetail],None]:
+        return Functions.convert_to_type_list(self.__json_data,"evolution_details",EvolutionDetail)
+    
+    @property
+    def evolves_to(self) -> Union[list[ChainLink],None]:
+        return Functions.convert_to_type_list(self.__json_data,"evolves_to",ChainLink)
+    
+
+    

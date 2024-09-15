@@ -1,5 +1,6 @@
 from ..Utility.Common import *
-from typing import List
+from .Pokemon import PokemonFormType
+
 class PokemonFormSprites:
     def __init__(self,json_data):
         self.__json_data = json_data
@@ -78,8 +79,8 @@ class PokemonForms(BaseModel):
         return Functions.convert_to_type(self._json_data,"pokemon",NamedAPIResource)
     
     @property
-    def types(self) -> Union[List,None]:
-        from .Pokemon import PokemonFormType
+    def types(self) -> Union[list[PokemonFormType],None]:
+
         return Functions.convert_to_type_list(self._json_data,"types",PokemonFormType)
     
     @property
@@ -91,11 +92,11 @@ class PokemonForms(BaseModel):
         return Functions.convert_to_type(self._json_data,"version_group",NamedAPIResource)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)
     
     @property
-    def form_names(self) -> Union[List,None]:
+    def form_names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"form_names",Name)
     
     

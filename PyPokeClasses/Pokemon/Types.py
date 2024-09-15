@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from typing import List
 
 class TypePokemon:
     def __init__(self,json_data):
@@ -20,27 +19,27 @@ class TypeRelations:
         self.__json_data = json_data
         
     @property
-    def no_damage_to(self) -> Union[List,None]:
+    def no_damage_to(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self.__json_data,"no_damage_to",NamedAPIResource)
     
     @property
-    def half_damage_to(self) -> Union[List,None]:
+    def half_damage_to(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self.__json_data,"half_damage_to",NamedAPIResource)
     
     @property
-    def double_damage_to(self) -> Union[List,None]:
+    def double_damage_to(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self.__json_data,"double_damage_to",NamedAPIResource)
     
     @property
-    def no_damage_from(self) -> Union[List,None]:
+    def no_damage_from(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self.__json_data,"no_damage_from",NamedAPIResource)
     
     @property
-    def half_damage_from(self) -> Union[List,None]:
+    def half_damage_from(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self.__json_data,"half_damage_from",NamedAPIResource)
     
     @property
-    def double_damage_from(self) -> Union[List,None]:
+    def double_damage_from(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self.__json_data,"double_damage_from",NamedAPIResource)
     
 class TypeRelationsPast:
@@ -217,11 +216,11 @@ class Types(BaseModel):
         return Functions.convert_to_type(self._json_data,"damage_relations",TypeRelations)
     
     @property
-    def past_damage_relations(self) -> Union[List,None]:
+    def past_damage_relations(self) -> Union[list[TypeRelationsPast],None]:
         return Functions.convert_to_type_list(self._json_data,"past_damage_relations",TypeRelationsPast)
 
     @property
-    def game_indices(self) -> Union[List,None]:
+    def game_indices(self) -> Union[list[GenerationGameIndex],None]:
         return Functions.convert_to_type_list(self._json_data,"game_indices",GenerationGameIndex)
     
     @property
@@ -233,15 +232,15 @@ class Types(BaseModel):
         return Functions.convert_to_type(self._json_data,"move_damage_class",NamedAPIResource)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)
 
     @property
-    def pokemon(self) -> Union[List,None]:
+    def pokemon(self) -> Union[list[TypePokemon],None]:
         return Functions.convert_to_type_list(self._json_data,"pokemon",TypePokemon)
     
     @property
-    def moves(self) -> Union[List,None]:
+    def moves(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"moves",NamedAPIResource)
     
     @property

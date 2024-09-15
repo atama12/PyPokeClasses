@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from typing import List,Union
 
 class PokemonAbility:
     def __init__(self,json_data):
@@ -50,21 +49,9 @@ class PokemonTypePast:
         return Functions.convert_to_type(self.__json_data,"generation",NamedAPIResource)
     
     @property
-    def types(self) -> Union[List,None]:
+    def types(self) -> Union[list[PokemonType],None]:
         return Functions.convert_to_type_list(self.__json_data,"types",PokemonType)
 
-class PokemonHeldItem:
-    def __init__(self,json_data):
-        self.__json_data:dict = json_data
-        
-    @property
-    def item(self) -> Union[NamedAPIResource,None]:
-        return Functions.convert_to_type(self.__json_data,"item",NamedAPIResource)
-    
-    @property
-    def version_details(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self.__json_data,"version_details",PokemonHeldItemVersion)
-    
 class PokemonHeldItemVersion:
     def __init__(self,json_data):
         self.__json_data = json_data
@@ -77,17 +64,17 @@ class PokemonHeldItemVersion:
     def rarity(self) -> Union[int,None]:
         return Functions.convert_to_type(self.__json_data,"rarity",int)
     
-class PokemonMove:
+class PokemonHeldItem:
     def __init__(self,json_data):
-        self.__json_data = json_data
+        self.__json_data:dict = json_data
         
     @property
-    def move(self) -> Union[NamedAPIResource,None]:
-        return Functions.convert_to_type(self.__json_data,"move",NamedAPIResource)
+    def item(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"item",NamedAPIResource)
     
     @property
-    def version_group_details(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self.__json_data,"version_group_details",PokemonMoveVersion)
+    def version_details(self) -> Union[list[PokemonHeldItemVersion],None]:
+        return Functions.convert_to_type_list(self.__json_data,"version_details",PokemonHeldItemVersion)
     
 class PokemonMoveVersion:
     def __init__(self,json_data):
@@ -104,6 +91,20 @@ class PokemonMoveVersion:
     @property
     def level_learned_at(self) -> Union[int,None]:
         return Functions.convert_to_type(self.__json_data,"level_learned_at",int)
+    
+class PokemonMove:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def move(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"move",NamedAPIResource)
+    
+    @property
+    def version_group_details(self) -> Union[list[PokemonMoveVersion],None]:
+        return Functions.convert_to_type_list(self.__json_data,"version_group_details",PokemonMoveVersion)
+    
+
     
 class PokemonStat:
     def __init__(self,json_data):
@@ -799,30 +800,30 @@ class Pokemon(BaseModel):
         return Functions.convert_to_type(self._json_data,"weight",int)
 
     @property
-    def abilities(self) -> Union[List,None]:
+    def abilities(self) -> Union[list[PokemonAbility],None]:
         return Functions.convert_to_type_list(self._json_data,"abilities",PokemonAbility)
     
     @property
-    def forms(self) -> Union[List,None]:
+    def forms(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"forms",NamedAPIResource)
     
     @property
-    def game_indices(self) -> Union[List,None]:
+    def game_indices(self) -> Union[list[VersionGameIndex],None]:
         return Functions.convert_to_type_list(self._json_data,"game_indices",VersionGameIndex)
     
     @property
-    def held_items(self) -> Union[List,None]:
+    def held_items(self) -> Union[list[PokemonHeldItem],None]:
         return Functions.convert_to_type_list(self._json_data,"held_items",PokemonHeldItem)
     
     @property
     def location_area_encounters(self) -> Union[str,None]:
         return Functions.convert_to_type(self._json_data,"location_area_encounters",str)
     @property
-    def moves(self) -> Union[List,None]:
+    def moves(self) -> Union[list[PokemonMove],None]:
         return Functions.convert_to_type_list(self._json_data,"moves",PokemonMove)
     
     @property
-    def past_types(self) -> Union[List,None]:
+    def past_types(self) -> Union[list[PokemonTypePast],None]:
         return Functions.convert_to_type_list(self._json_data,"past_types",PokemonTypePast)
     
     @property
@@ -838,9 +839,9 @@ class Pokemon(BaseModel):
         return Functions.convert_to_type(self._json_data,"species",NamedAPIResource)
 
     @property
-    def stats(self) -> Union[List,None]:
+    def stats(self) -> Union[list[PokemonStat],None]:
         return Functions.convert_to_type_list(self._json_data,"stats",PokemonStat)
     
     @property
-    def types(self) -> Union[List,None]:
+    def types(self) -> Union[list[PokemonType],None]:
         return Functions.convert_to_type_list(self._json_data,"types",PokemonType)

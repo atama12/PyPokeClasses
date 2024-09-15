@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from typing import List
 
 class MoveBattleStyles(BaseModel):
     def __init__(self,id):
@@ -15,5 +14,5 @@ class MoveBattleStyles(BaseModel):
         return Functions.convert_to_type(self._json_data,"name",str)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)

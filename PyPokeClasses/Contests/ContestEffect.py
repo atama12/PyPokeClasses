@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from typing import List
 
 class ContestEffect(BaseModel):
     def __init__(self,id):
@@ -18,9 +17,9 @@ class ContestEffect(BaseModel):
         return Functions.convert_to_type(self._json_data,"jam",int)
     
     @property
-    def effect_entries(self) -> Union[List,None]:
+    def effect_entries(self) -> Union[list[Effect],None]:
         return Functions.convert_to_type_list(self._json_data,"effect_entries",Effect)
     
     @property
-    def flavor_text_entries(self) -> Union[List,None]:
+    def flavor_text_entries(self) -> Union[list[FlavorText],None]:
         return Functions.convert_to_type_list(self._json_data,"flavor_text_entries",FlavorText)

@@ -1,52 +1,11 @@
 from ..Utility.Common import *
-from typing import List
-class Abilities(BaseModel):
-    def __init__(self,id):
-        super().__init__("https://pokeapi.co/api/v2/ability/" + str(id))
-        
-    @property
-    def id(self) -> Union[int,None]:
-        return Functions.convert_to_type(self._json_data,"id",int)
-    
-    @property
-    def name(self) -> Union[str,None]:
-        return Functions.convert_to_type(self._json_data,"name",str)
-    
-    @property
-    def is_main_series(self) -> Union[bool,None]:
-        return Functions.convert_to_type(self._json_data,"is_main_series",bool)
-    
-    @property
-    def generation(self) -> Union[NamedAPIResource,None]:
-        return Functions.convert_to_type(self._json_data,"generation",NamedAPIResource)
-    
-    @property
-    def names(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self._json_data,"names",Name)
-    
-    @property
-    def effect_entries(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self._json_data,"effect_entries",VerboseEffect)
-    
-    @property
-    def effect_changes(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self._json_data,"effect_changes",AbilityEffectChange)
-    
-    @property
-    def flavor_text_entries(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self._json_data,"flavor_text_entries",AbilityFlavorText)
-    
-    @property
-    def pokemon(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self._json_data,"pokemon",AbilityPokemon)
-    
     
 class AbilityEffectChange:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def effect_entries(self) -> Union[List,None]:
+    def effect_entries(self) -> Union[list[Effect],None]:
         return Functions.convert_to_type_list(self.__json_data,"effect_entries",Effect)
 
     @property
@@ -84,3 +43,43 @@ class AbilityPokemon:
     @property
     def pokemon(self) -> Union[NamedAPIResource,None]:
         return Functions.convert_to_type(self.__json_data,"pokemon",NamedAPIResource)
+    
+class Abilities(BaseModel):
+    def __init__(self,id):
+        super().__init__("https://pokeapi.co/api/v2/ability/" + str(id))
+        
+    @property
+    def id(self) -> Union[int,None]:
+        return Functions.convert_to_type(self._json_data,"id",int)
+    
+    @property
+    def name(self) -> Union[str,None]:
+        return Functions.convert_to_type(self._json_data,"name",str)
+    
+    @property
+    def is_main_series(self) -> Union[bool,None]:
+        return Functions.convert_to_type(self._json_data,"is_main_series",bool)
+    
+    @property
+    def generation(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self._json_data,"generation",NamedAPIResource)
+    
+    @property
+    def names(self) -> Union[list[Name],None]:
+        return Functions.convert_to_type_list(self._json_data,"names",Name)
+    
+    @property
+    def effect_entries(self) -> Union[list[VerboseEffect],None]:
+        return Functions.convert_to_type_list(self._json_data,"effect_entries",VerboseEffect)
+    
+    @property
+    def effect_changes(self) -> Union[list[AbilityEffectChange],None]:
+        return Functions.convert_to_type_list(self._json_data,"effect_changes",AbilityEffectChange)
+    
+    @property
+    def flavor_text_entries(self) -> Union[list[AbilityFlavorText],None]:
+        return Functions.convert_to_type_list(self._json_data,"flavor_text_entries",AbilityFlavorText)
+    
+    @property
+    def pokemon(self) -> Union[list[AbilityPokemon],None]:
+        return Functions.convert_to_type_list(self._json_data,"pokemon",AbilityPokemon)

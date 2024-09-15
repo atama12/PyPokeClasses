@@ -1,16 +1,16 @@
 from ..Utility.Common import *
-from typing import List
+from ..Pokemon.Abilities import AbilityEffectChange
 
 class ContestComboDetail:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def use_before(self) -> Union[List,None]:
+    def use_before(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self.__json_data,"use_before",NamedAPIResource)
     
     @property
-    def use_after(self) -> Union[List,None]:
+    def use_after(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self.__json_data,"use_after",NamedAPIResource)
     
 class ContestComboSets:
@@ -129,7 +129,7 @@ class PastMoveStatValues:
     
 
     @property
-    def effect_entries(self) -> Union[List,None]:
+    def effect_entries(self) -> Union[list[VerboseEffect],None]:
         return Functions.convert_to_type_list(self.__json_data,"effect_entries",VerboseEffect)
     
     @property
@@ -189,20 +189,19 @@ class Moves(BaseModel):
         return Functions.convert_to_type(self._json_data,"damage_class",NamedAPIResource)
       
     @property
-    def effect_entries(self) -> Union[List,None]:
+    def effect_entries(self) -> Union[list[VerboseEffect],None]:
         return Functions.convert_to_type_list(self._json_data,"effect_entries",VerboseEffect)
     
     @property
-    def effect_changes(self) -> Union[List,None]:
-        from ..Pokemon.Abilities import AbilityEffectChange
+    def effect_changes(self) -> Union[list[AbilityEffectChange],None]:
         return Functions.convert_to_type_list(self._json_data,"effect_changes",AbilityEffectChange)
     
     @property
-    def learned_by_pokemon(self) -> Union[List,None]:
+    def learned_by_pokemon(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"learned_by_pokemon",NamedAPIResource)
     
     @property
-    def flavor_text_entries(self) -> Union[List,None]:
+    def flavor_text_entries(self) -> Union[list[MoveFlavorText],None]:
         return Functions.convert_to_type_list(self._json_data,"flavor_text_entries",MoveFlavorText)
     
     @property
@@ -210,7 +209,7 @@ class Moves(BaseModel):
         return Functions.convert_to_type(self._json_data,"generation",NamedAPIResource)
 
     @property
-    def machines(self) -> Union[List,None]:
+    def machines(self) -> Union[list[MachineVersionDetail],None]:
         return Functions.convert_to_type_list(self._json_data,"machines",MachineVersionDetail)
     
     @property
@@ -218,15 +217,15 @@ class Moves(BaseModel):
         return Functions.convert_to_type(self._json_data,"meta",MoveMetaData)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)
     
     @property
-    def past_values(self) -> Union[List,None]:
+    def past_values(self) -> Union[list[PastMoveStatValues],None]:
         return Functions.convert_to_type_list(self._json_data,"past_values",PastMoveStatValues)
     
     @property
-    def stat_changes(self) -> Union[List,None]:
+    def stat_changes(self) -> Union[list[MoveStatChange],None]:
         return Functions.convert_to_type_list(self._json_data,"stat_changes",MoveStatChange)
     
     @property

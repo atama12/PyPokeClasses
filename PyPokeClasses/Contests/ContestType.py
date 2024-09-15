@@ -1,5 +1,5 @@
+from __future__ import annotations
 from ..Utility.Common import *
-from typing import List
 
 class ContestType(BaseModel):
     def __init__(self,id):
@@ -18,7 +18,7 @@ class ContestType(BaseModel):
         return Functions.convert_to_type(self._json_data,"berry_flavor",NamedAPIResource)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[ContestName],None]:
         return Functions.convert_to_type_list(self._json_data,"names",ContestName)
 
 class ContestName:

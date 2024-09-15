@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from typing import List
 
 class ItemFlingEffect(BaseModel):
     def __init__(self,id):
@@ -14,10 +13,10 @@ class ItemFlingEffect(BaseModel):
         return Functions.convert_to_type(self._json_data,"name",str)
     
     @property
-    def effect_entries(self) -> Union[List,None]:
+    def effect_entries(self) -> Union[list[Effect],None]:
         return Functions.convert_to_type_list(self._json_data,"effect_entries",Effect)
     
     @property
-    def items(self) -> Union[List,None]:
+    def items(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"items",NamedAPIResource)
     

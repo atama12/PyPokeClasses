@@ -10,6 +10,6 @@ class PokemonLocationAreas(BaseModel):
     
     
     @property
-    def version_details(self) -> Union[List,None]:
+    def version_details(self) -> Union[list[VersionEncounterDetail],None]:
         return Functions.convert_to_type(self._json_data,"version_details",VersionEncounterDetail)
     

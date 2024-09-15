@@ -1,18 +1,5 @@
 from ..Utility.Common import *
-from typing import List
 
-class NaturePokeathlonStatAffectSets:
-    def __init__(self,json_data):
-        self.__json_data = json_data
-        
-    @property
-    def increase(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self.__json_data,"increase",NaturePokeathlonStatAffect)
-    
-    @property
-    def decrease(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self.__json_data,"decrease",NaturePokeathlonStatAffect)
-      
 class NaturePokeathlonStatAffect:
     def __init__(self,json_data):
         self.__json_data = json_data
@@ -24,6 +11,20 @@ class NaturePokeathlonStatAffect:
     @property
     def nature(self) -> Union[NamedAPIResource,None]:
         return Functions.convert_to_type(self.__json_data,"nature",NamedAPIResource)
+
+class NaturePokeathlonStatAffectSets:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def increase(self) -> Union[list[NaturePokeathlonStatAffect],None]:
+        return Functions.convert_to_type_list(self.__json_data,"increase",NaturePokeathlonStatAffect)
+    
+    @property
+    def decrease(self) -> Union[list[NaturePokeathlonStatAffect],None]:
+        return Functions.convert_to_type_list(self.__json_data,"decrease",NaturePokeathlonStatAffect)
+      
+
     
 class PokeathlonStats(BaseModel):
     def __init__(self,id):
@@ -38,7 +39,7 @@ class PokeathlonStats(BaseModel):
         return Functions.convert_to_type(self._json_data,"name",str)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)
     
     @property

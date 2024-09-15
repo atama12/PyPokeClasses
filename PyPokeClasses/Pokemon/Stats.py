@@ -1,16 +1,4 @@
 from ..Utility.Common import *
-from typing import List
-class MoveStatAffectSets:
-    def __init__(self,json_data):
-        self.__json_data = json_data
-        
-    @property
-    def increase(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self.__json_data,"increase",MoveStatAffect)
-    
-    @property
-    def decrease(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self.__json_data,"decrease",MoveStatAffect)
       
 class MoveStatAffect:
     def __init__(self,json_data):
@@ -24,17 +12,28 @@ class MoveStatAffect:
     def move(self) -> Union[NamedAPIResource,None]:
         return Functions.convert_to_type(self.__json_data,"move",NamedAPIResource)
     
+class MoveStatAffectSets:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def increase(self) -> Union[list[MoveStatAffect],None]:
+        return Functions.convert_to_type_list(self.__json_data,"increase",MoveStatAffect)
+    
+    @property
+    def decrease(self) -> Union[list[MoveStatAffect],None]:
+        return Functions.convert_to_type_list(self.__json_data,"decrease",MoveStatAffect)
     
 class NatureStatAffectSets:
     def __init__(self,json_data):
         self.__json_data = json_data
         
     @property
-    def increase(self) -> Union[List,None]:
+    def increase(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self.__json_data,"increase",NamedAPIResource)
     
     @property
-    def decrease(self) -> Union[List,None]:
+    def decrease(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self.__json_data,"decrease",NamedAPIResource)
 
 class Stats(BaseModel):
@@ -66,7 +65,7 @@ class Stats(BaseModel):
         return Functions.convert_to_type(self._json_data,"affecting_natures",NatureStatAffectSets)
     
     @property
-    def characteristics(self) -> Union[List,None]:
+    def characteristics(self) -> Union[list[APIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"characteristics",APIResource)
     
     @property
@@ -74,6 +73,6 @@ class Stats(BaseModel):
         return Functions.convert_to_type(self._json_data,"move_damage_class",NamedAPIResource)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)
 

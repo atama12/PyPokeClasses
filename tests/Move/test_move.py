@@ -15,6 +15,7 @@ def test_api_connect():
 
     test1 = Moves(1)
     test2 = Moves(50000)
+
     # ステータスコードが200であることを確認
     assert test1.status_code == 200
     assert test2.status_code == 404

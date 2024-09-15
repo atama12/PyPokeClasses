@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from typing import List
 
 class ItemSprites:
     def __init__(self,json_data):
@@ -8,18 +7,6 @@ class ItemSprites:
     @property
     def default(self) -> Union[str,None]:
         return Functions.convert_to_type(self.__json_data,"default",str)
-    
-class ItemHolderPokemon:
-    def __init__(self,json_data):
-        self.__json_data = json_data
-        
-    @property
-    def pokemon(self) -> Union[NamedAPIResource,None]:
-        return Functions.convert_to_type(self.__json_data,"pokemon",NamedAPIResource)
-    
-    @property
-    def version_details(self) -> Union[List,None]:
-        return Functions.convert_to_type_list(self.__json_data,"version_details",ItemHolderPokemonVersionDetail)
     
 class ItemHolderPokemonVersionDetail:
     def __init__(self,json_data):
@@ -32,7 +19,19 @@ class ItemHolderPokemonVersionDetail:
     @property
     def version(self) -> Union[NamedAPIResource,None]:
         return Functions.convert_to_type(self.__json_data,"version",NamedAPIResource)
-
+    
+class ItemHolderPokemon:
+    def __init__(self,json_data):
+        self.__json_data = json_data
+        
+    @property
+    def pokemon(self) -> Union[NamedAPIResource,None]:
+        return Functions.convert_to_type(self.__json_data,"pokemon",NamedAPIResource)
+    
+    @property
+    def version_details(self) -> Union[list[ItemHolderPokemonVersionDetail],None]:
+        return Functions.convert_to_type_list(self.__json_data,"version_details",ItemHolderPokemonVersionDetail)
+    
 class Item(BaseModel):
     def __init__(self,id):
         super().__init__("https://pokeapi.co/api/v2/item/" + str(id))
@@ -58,7 +57,7 @@ class Item(BaseModel):
         return Functions.convert_to_type(self._json_data,"fling_effect",NamedAPIResource)
     
     @property
-    def attributes(self) -> Union[List,None]:
+    def attributes(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"attributes",NamedAPIResource)
     
     @property
@@ -66,19 +65,19 @@ class Item(BaseModel):
         return Functions.convert_to_type(self._json_data,"category",NamedAPIResource)
     
     @property
-    def effect_entries(self) -> Union[List,None]:
+    def effect_entries(self) -> Union[list[VerboseEffect],None]:
         return Functions.convert_to_type_list(self._json_data,"effect_entries",VerboseEffect)
     
     @property
-    def flavor_text_entries(self) -> Union[List,None]:
+    def flavor_text_entries(self) -> Union[list[VersionGroupFlavorText],None]:
         return Functions.convert_to_type_list(self._json_data,"flavor_text_entries",VersionGroupFlavorText)
 
     @property
-    def game_indices(self) -> Union[List,None]:
+    def game_indices(self) -> Union[list[GenerationGameIndex],None]:
         return Functions.convert_to_type_list(self._json_data,"game_indices",GenerationGameIndex)
     
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)
     
     @property
@@ -86,7 +85,7 @@ class Item(BaseModel):
         return Functions.convert_to_type(self._json_data,"sprites",ItemSprites)
     
     @property
-    def held_by_pokemon(self) -> Union[List,None]:
+    def held_by_pokemon(self) -> Union[list[ItemHolderPokemon],None]:
         return Functions.convert_to_type_list(self._json_data,"held_by_pokemon",ItemHolderPokemon)
     
     @property
@@ -94,7 +93,7 @@ class Item(BaseModel):
         return Functions.convert_to_type(self._json_data,"baby_trigger_for",APIResource)
     
     @property
-    def machines(self) -> Union[List,None]:
+    def machines(self) -> Union[list[MachineVersionDetail],None]:
         return Functions.convert_to_type_list(self._json_data,"machines",MachineVersionDetail)
      
 

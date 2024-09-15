@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from typing import List
 
 class SuperContestEffect(BaseModel):
     def __init__(self,id):
@@ -14,9 +13,9 @@ class SuperContestEffect(BaseModel):
         return Functions.convert_to_type(self._json_data,"appeal",int)
     
     @property
-    def flavor_text_entries(self) -> Union[List,None]:
+    def flavor_text_entries(self) -> Union[list[FlavorText],None]:
         return Functions.convert_to_type_list(self._json_data,"flavor_text_entries",FlavorText)
     
     @property
-    def moves(self) -> Union[List,None]:
+    def moves(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"moves",NamedAPIResource)

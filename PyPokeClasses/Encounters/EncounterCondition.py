@@ -1,5 +1,4 @@
 from ..Utility.Common import *
-from typing import List
 
 class EncounterCondition(BaseModel):
     def __init__(self,id):
@@ -15,11 +14,11 @@ class EncounterCondition(BaseModel):
     
 
     @property
-    def names(self) -> Union[List,None]:
+    def names(self) -> Union[list[Name],None]:
         return Functions.convert_to_type_list(self._json_data,"names",Name)
     
     @property
-    def values(self) -> Union[List,None]:
+    def values(self) -> Union[list[NamedAPIResource],None]:
         return Functions.convert_to_type_list(self._json_data,"values",NamedAPIResource)
 
 

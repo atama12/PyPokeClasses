@@ -1,5 +1,5 @@
 from ..Utility.Common import *
-from typing import List
+
 class Characteristic(BaseModel):
     def __init__(self,id):
         super().__init__("https://pokeapi.co/api/v2/characteristic/" + str(id))
@@ -13,7 +13,7 @@ class Characteristic(BaseModel):
         return Functions.convert_to_type(self._json_data,"gene_modulo",int)
 
     @property
-    def possible_values(self) -> Union[List,None]:
+    def possible_values(self) -> Union[list[int],None]:
         return Functions.convert_to_type_list(self._json_data,"possible_values",int)  
     
     @property
@@ -21,5 +21,5 @@ class Characteristic(BaseModel):
         return Functions.convert_to_type(self._json_data,"highest_stat",NamedAPIResource)
     
     @property
-    def descriptions(self) -> Union[List,None]:
+    def descriptions(self) -> Union[list[Description],None]:
         return Functions.convert_to_type_list(self._json_data,"descriptions",Description)  

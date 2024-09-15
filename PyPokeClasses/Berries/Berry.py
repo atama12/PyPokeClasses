@@ -46,7 +46,7 @@ class Berry(BaseModel):
         return Functions.convert_to_type(self._json_data,"firmness",NamedAPIResource)
     
     @property
-    def flavors(self) -> Union[List,None]:
+    def flavors(self) -> Union[list,None]:
         return Functions.convert_to_type_list(self._json_data,"flavors",BerryFlavorMap)
     
     @property
