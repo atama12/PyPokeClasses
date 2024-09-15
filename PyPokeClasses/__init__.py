@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 __author__ = 'atama12'
 __email__ = 'atama5860@gmail.com'
 __credits__ = ["atama12"]
-__version__ = '0.1.17'
+__version__ = '0.1.18'
 __copyright__ = 'Copyright atama12 2024'
 __license__ = 'MIT'
 
